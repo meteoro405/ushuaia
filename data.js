@@ -53,6 +53,17 @@ const DATA = [
   "foto1": "Tren_fin_mundo.jpg",
   "epoca": "Todo el año.",
   "horario": "La estación permanece abierta de 8:30 a 17:15 hs."
+ },
+ {
+  "tipo": "LUGAR DE INTERES",
+  "nombre": "CASA BEBAN",
+  "obs": "Este edificio es uno de los mayores exponentes del patrimonio arquitectónico local. Declarado Patrimonio Cultural de la Ciudad de Ushuaia por Resolución del Concejo Deliberante (09/10/96). En este lugar se realizaron innumerables hechos sociales de significación para la población de Ushuaia. Perteneció a Tomás Bebán (hijo de un inmigrante de origen croata), quien cuando decidió casarse encargó a Suecia los paneles de su futura casa. La vivienda la trajeron desarmada y la instalaron entre 1911 y 1913. Se utilizó como residencia familiar hasta el fallecimiento de Tomás en 1963 (éste se había casado con Paula Amanda Arias y tuvieron ocho hijos). Luego funcionó una clínica y el hotel Las Goletas. Más adelante, los descendientes de la familia la vendieron. Debido al deterioro que mostraba, la Municipalidad de Ushuaia decidió recuperar el edificio y trasladarlo, desde el lugar donde fue construido (en Av. Maipú 857) hacia su ubicación actual en el Paseo de los Antiguos Pobladores. Posteriormente se trasladaron otros dos edificios antiguos en el mismo sector -las casas Pena y Torres-, de acuerdo a un proyecto “Pueblo Viejo” de la Municipalidad de Ushuaia, de rescate del patrimonio histórico-arquitectónico de la ciudad.\nEl 4 de noviembre de 1994 la casa Beban se inauguró como Centro Cultural y de Exposiciones.",
+  "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2299.132652939149!2d-68.32353782274629!3d-54.81278517275068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c2317753eb29d%3A0x256a3560f1903fd4!2sAntigua%20Casa%20Beban!5e0!3m2!1ses!2sar!4v1793998051308!5m2!1ses!2sar",
+  "lat": -54.81278517275068,
+  "lng": -68.32353782274629,
+  "foto1": "Casa_Beban.jpg",
+  "epoca": "Todo el año.",
+  "horario": "Lunes a viernes de 10:00 a 18:00 horas."
  }
 ];
 
