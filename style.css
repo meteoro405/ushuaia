@@ -1,0 +1,2076 @@
+/* ============================================================
+   DE CUESTAS, ABRAS Y QUEBRADAS — style.css
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --parch:       #E8D8B0;
+  --parch-light: #F2E8CC;
+  --leather:     #7A3A18;
+  --leather-dk:  #4A1E08;
+  --leather-md:  #9A5530;
+  --bronze:      #A0552A;
+  --bronze-lt:   #C8845A;
+  --bronze-dk:   #5C2A0E;
+  --ink:         #1E1008;
+  --ink-md:      #4A2E10;
+  --ink-lt:      #7A5A38;
+  --dif-baja:    #2d5c1e;
+  --dif-media:   #6b4408;
+  --dif-alta:    #C0100A;
+  --border:      rgba(90,58,26,0.22);
+}
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  background: var(--leather);
+  color: var(--ink);
+}
+
+/* ── HEADER ─────────────────────────────────────────────── */
+.header {
+  background: linear-gradient(180deg, #3A1A06 0%, #5A2A0E 100%);
+  padding: 8px 14px;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 2px solid var(--bronze-dk);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+}
+.header-inner {
+  display: flex; align-items: center; gap: 12px;
+  max-width: 1400px; margin: 0 auto;
+}
+.compass-wrap { flex-shrink: 0; }
+.compass-svg { width: 50px; height: 50px; display: block; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+.logo-area { flex-shrink: 0; }
+.app-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px; font-weight: 900; color: var(--parch);
+  line-height: 1.15; text-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+}
+.app-sub {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500;
+  letter-spacing: 1.5px; color: var(--bronze-lt); text-transform: uppercase;
+  margin-top: 3px; opacity: 0.8;
+}
+
+/* ── SEARCH ─────────────────────────────────────────────── */
+.search-wrap { flex: 1; max-width: 400px; position: relative; display: flex; align-items: center; margin-left: auto; }
+.search-icon { position: absolute; left: 10px; font-size: 17px; color: var(--bronze-lt); pointer-events: none; opacity: 0.6; }
+.search-input {
+  width: 100%; background: rgba(232,216,176,0.1); border: 1px solid rgba(200,132,90,0.35);
+  border-radius: 3px; color: var(--parch); font-family: 'Inter', sans-serif;
+  font-size: 13px; padding: 8px 30px 8px 32px; outline: none;
+  transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
+}
+.search-input::placeholder { color: rgba(232,216,176,0.3); }
+.search-input::-webkit-search-cancel-button { display: none; }
+.search-input:focus { border-color: rgba(200,132,90,0.7); background: rgba(232,216,176,0.15); }
+.search-clear { position: absolute; right: 8px; background: none; border: none; color: rgba(200,132,90,0.45); font-size: 11px; cursor: pointer; display: none; padding: 2px; }
+.search-clear:hover { color: var(--bronze-lt); }
+.search-clear.visible { display: block; }
+
+/* ── TOOLBAR ─────────────────────────────────────────────── */
+.toolbar {
+  background: #3A1A06;
+  border-bottom: 1px solid rgba(160,85,42,0.4);
+  position: sticky; top: 68px; z-index: 90;
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 14px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.toolbar::-webkit-scrollbar { display: none; }
+.toolbar-sep {
+  width: 1px; height: 20px;
+  background: rgba(160,85,42,0.35); flex-shrink: 0;
+}
+
+.pill {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.3px; text-transform: uppercase; padding: 5px 10px;
+  border: 1px solid rgba(200,132,90,0.25); border-radius: 3px;
+  background: transparent; color: rgba(200,132,90,0.6);
+  cursor: pointer; white-space: nowrap; transition: all 0.15s;
+}
+.pill:hover { border-color: rgba(200,132,90,0.65); color: rgba(232,216,176,0.9); }
+.pill.active { background: var(--bronze); border-color: var(--bronze); color: #fff; }
+.pill.active-prov { background: #3A5A30; border-color: #3A5A30; color: #fff; }
+.fav-pill.active { background: #A0101A; border-color: #A0101A; color: #fff; }
+.done-pill.active { background: #1A6A1A; border-color: #1A6A1A; color: #fff; }
+.random-pill { border-color: rgba(200,132,90,0.4); color: rgba(232,216,176,0.7); }
+.random-pill:hover { background: rgba(200,132,90,0.15); border-color: var(--bronze-lt); color: var(--parch); }
+
+/* ── LAYOUT ─────────────────────────────────────────────── */
+.app { display: flex; flex-direction: column; height: 100dvh; overflow: hidden; position: relative; }
+.main { display: grid; grid-template-columns: 240px 1fr; flex: 1; overflow: hidden; min-height: 0; }
+
+/* ── SIDEBAR ─────────────────────────────────────────────── */
+.sidebar {
+  background: linear-gradient(180deg, #C8A870 0%, #BF9E60 100%);
+  border-right: 2px solid var(--leather-dk);
+  overflow-y: auto; -webkit-overflow-scrolling: touch; touch-action: pan-y;
+  display: flex; flex-direction: column; min-height: 0;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(90,42,14,0.35); border-radius: 2px; }
+
+.sidebar-count {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--leather-dk);
+  padding: 6px 12px 5px; border-bottom: 1px solid rgba(90,42,14,0.2);
+  flex-shrink: 0; position: sticky; top: 0; background: #BF9E60; z-index: 10; opacity: 0.9;
+}
+
+.route-item { padding: 8px 12px; cursor: pointer; border-bottom: 1px solid rgba(90,42,14,0.1); transition: background 0.12s; }
+.route-item:hover { background: rgba(90,42,14,0.1); }
+.route-item.active { background: var(--leather); }
+
+.ri-type { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--leather-md); margin-bottom: 2px; }
+.route-item.active .ri-type { color: var(--bronze-lt); }
+
+.ri-name-row { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
+.ri-name { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.route-item.active .ri-name { color: var(--parch-light); }
+
+/* Icons in list — bigger when active */
+.ri-icons { display: flex; gap: 2px; flex-shrink: 0; }
+.ri-icon { font-size: 36px; line-height: 1; transition: font-size 0.15s; }
+.route-item.active .ri-icon { font-size: 42px; }
+.fav-icon   { color: #C01020; }
+.done-icon  { color: #1A6A1A; font-weight: 700; }
+.share-icon { color: #2A5A7A; font-size: 28px; }
+.route-item.active .share-icon { font-size: 32px; }
+
+.ri-prov { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink-md); margin-top: 2px; }
+.route-item.active .ri-prov { color: rgba(242,232,204,0.7); }
+
+.ri-badges { display: flex; gap: 3px; margin-top: 4px; flex-wrap: wrap; }
+.badge { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.5px; padding: 2px 6px; border-radius: 2px; text-transform: uppercase; }
+.b-baja    { background: rgba(45,92,30,0.15);   color: var(--dif-baja); }
+.b-media   { background: rgba(107,68,8,0.15);   color: var(--dif-media); }
+.b-alta    { background: rgba(192,16,10,0.13);  color: var(--dif-alta); }
+.b-ripio   { background: rgba(90,58,26,0.15);   color: var(--ink-md); }
+.b-asfalto { background: rgba(42,90,122,0.12);  color: #2A5A7A; }
+.b-mixto   { background: rgba(90,60,120,0.12);  color: #5A3A7A; }
+.b-nd      { background: rgba(90,58,26,0.08);   color: var(--ink-lt); }
+.route-item.active .badge { background: rgba(242,232,204,0.18); color: rgba(242,232,204,0.85); }
+.hl { background: rgba(200,132,90,0.38); border-radius: 2px; padding: 0 1px; }
+
+/* ── DETAIL ─────────────────────────────────────────────── */
+.detail {
+  overflow-y: auto; -webkit-overflow-scrolling: touch; touch-action: pan-y;
+  background: var(--parch);
+  background-image: radial-gradient(ellipse at 20% 10%, rgba(242,232,204,0.5) 0%, transparent 60%);
+  min-height: 0;
+}
+.detail::-webkit-scrollbar { width: 4px; }
+.detail::-webkit-scrollbar-thumb { background: rgba(90,58,26,0.25); border-radius: 2px; }
+
+/* ── EMPTY STATE — compact ───────────────────────────────── */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: 70px;  /* small — allows ~6-7 items visible in sidebar */
+  gap: 6px; color: var(--ink-lt); padding: 10px;
+}
+.empty-txt {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase; opacity: 0.4;
+}
+
+/* ── DETAIL CONTENT ──────────────────────────────────────── */
+.hero-accent-bar { height: 4px; }
+.hero-band { padding: 14px 18px 0; border-bottom: 1px solid var(--border); }
+.hero-accent { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px; }
+.hero-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 2px; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--ink); line-height: 1.15; }
+.hero-state-badges { display: flex; gap: 5px; flex-shrink: 0; margin-top: 4px; }
+.state-badge { font-size: 15px; line-height: 1; }
+.state-badge.fav-badge  { color: #C0392B; }
+.state-badge.done-badge { color: #27AE60; }
+.state-badge.share-badge { color: #2A5A7A; font-size: 13px; }
+.hero-loc { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.8px; color: var(--ink-md); text-transform: uppercase; }
+.hero-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;                  /* sin gap entre botones */
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.action-btn {
+  border-radius: 0;        /* sin redondeo para que queden pegados */
+  border: none;
+  border-right: 1px solid var(--border);
+  background: rgba(160,85,42,0.07); font-size: 11px;
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px;
+  padding: 12px 2px; transition: all 0.18s; color: var(--bronze);
+  white-space: nowrap; box-sizing: border-box; width: 100%;
+  letter-spacing: 0.02em;
+}
+.action-btn:last-child { border-right: none; }
+.action-btn:hover,
+.action-btn:active { border-color: var(--bronze); background: rgba(160,85,42,0.22); color: var(--ink); transform: scale(0.97); }
+.action-label { font-size: 11px; }
+.fav-btn.active  { color: #C01020; border-color: #C01020; background: rgba(192,16,32,0.14); }
+.done-btn.active { color: #1A6A1A; border-color: #1A6A1A; background: rgba(26,106,26,0.14); }
+
+/* ── STATS ───────────────────────────────────────────────── */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 12px 18px; border-bottom: 1px solid var(--border); }
+.stat { background: rgba(255,255,255,0.55); border: 1px solid var(--border); border-radius: 3px; padding: 9px 7px 7px; text-align: center; }
+.stat-val { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: var(--ink); display: block; line-height: 1; }
+.stat-key { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.6px; text-transform: uppercase; color: var(--ink-lt); margin-top: 4px; display: block; }
+
+/* ── SECTION TITLES ──────────────────────────────────────── */
+.sec-title { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--bronze); margin-bottom: 8px; padding-bottom: 5px; border-bottom: 1px solid rgba(160,85,42,0.25); }
+
+/* ── OBSERVACIONES ───────────────────────────────────────── */
+.obs-block { padding: 12px 18px; border-bottom: 1px solid var(--border); }
+.obs-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(160,85,42,0.25);
+}
+.obs-title-row .sec-title { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.obs-tag { display: block; width: 100%; box-sizing: border-box; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; padding: 10px 11px; border-radius: 3px; line-height: 1.7; white-space: pre-line; }
+.obs-warn  { background: rgba(196,149,42,0.13); color: #6b4408; border: 1px solid rgba(196,149,42,0.3); }
+.obs-info  { background: rgba(42,90,122,0.10);  color: #1e4a6a; border: 1px solid rgba(42,90,122,0.22); }
+.obs-route { background: rgba(45,92,30,0.10);   color: #1e4a14; border: 1px solid rgba(45,92,30,0.22); }
+
+/* ── TTS ─────────────────────────────────────────────────── */
+.tts-btn {
+  display: inline-flex; align-items: center; gap: 5px; padding: 6px 10px;
+  border-radius: 3px; border: 1px solid rgba(42,90,122,0.3);
+  background: rgba(42,90,122,0.08); color: #1e4a6a;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: background 0.15s;
+}
+.tts-btn:hover { background: rgba(42,90,122,0.15); }
+.tts-btn.tts-playing { background: rgba(42,90,122,0.2); border-color: #2A5A7A; animation: tts-pulse 1s ease-in-out infinite; }
+.tts-wave2 { opacity: 0; }
+.tts-btn.tts-playing .tts-wave2 { opacity: 1; }
+@keyframes tts-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(42,90,122,0.3)} 50%{box-shadow:0 0 0 4px rgba(42,90,122,0.1)} }
+
+/* ── MAPA ────────────────────────────────────────────────── */
+.map-section { padding: 12px 18px; border-bottom: 1px solid var(--border); }
+.map-btns-row { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }
+.gmaps-btn, .waze-btn {
+  flex: 1;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+  border-radius: 4px; padding: 7px 13px; text-decoration: none;
+  transition: background 0.15s; cursor: pointer; box-sizing: border-box;
+}
+.gmaps-btn {
+  color: #1A5276; background: rgba(42,90,122,0.10); border: 1px solid rgba(42,90,122,0.25);
+}
+.gmaps-btn:hover { background: rgba(42,90,122,0.18); }
+.waze-btn {
+  color: #0a4a6e; background: rgba(51,204,255,0.12); border: 1px solid rgba(51,204,255,0.35);
+}
+.waze-btn:hover { background: rgba(51,204,255,0.22); }
+.estacion-btn {
+  flex: 1;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+  border-radius: 4px; padding: 7px 13px; text-decoration: none;
+  transition: background 0.15s; box-sizing: border-box;
+  color: #1A4A1A; background: rgba(40,140,40,0.10); border: 1px solid rgba(40,140,40,0.30);
+}
+.estacion-btn:hover { background: rgba(40,140,40,0.18); }
+.gmaps-nodisp { cursor: default; color: var(--ink-lt); background: rgba(90,58,26,0.07); border-color: rgba(90,58,26,0.18); font-style: italic; font-size: 12px; }
+
+.map-container {
+  width: 100%; max-width: 100%;
+  background: rgba(90,58,26,0.07); border: 1.5px dashed rgba(90,58,26,0.28);
+  border-radius: 4px; overflow: hidden; position: relative;
+  touch-action: pan-y pinch-zoom; min-height: 40px; margin-bottom: 8px;
+}
+.map-container img { width: 100%; height: auto; max-height: 70vh; object-fit: contain; display: block; position: relative; z-index: 1; }
+.map-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--ink-lt); pointer-events: none; min-height: 80px; }
+.map-placeholder-icon { font-size: 22px; opacity: 0.3; }
+.map-placeholder-txt { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; opacity: 0.35; text-align: center; padding: 0 16px; }
+
+/* ── GALERÍA ─────────────────────────────────────────────── */
+.photos-section { padding: 12px 18px; border-bottom: 1px solid var(--border); }
+.photos-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.photo-container { aspect-ratio: 4/3; background: rgba(90,58,26,0.07); border: 1.5px dashed rgba(90,58,26,0.28); border-radius: 4px; overflow: hidden; position: relative; touch-action: pan-y pinch-zoom; }
+.photo-container img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
+.photo-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: var(--ink-lt); pointer-events: none; }
+.photo-placeholder-icon { font-size: 18px; opacity: 0.28; }
+.photo-placeholder-txt { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; opacity: 0.32; }
+
+/* ── MEJOR ÉPOCA & PRECAUCIONES ──────────────────────────── */
+.info-block { padding: 12px 18px; border-bottom: 1px solid var(--border); }
+.info-txt { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; line-height: 1.6; color: var(--ink-md); }
+.epoca-txt { color: #1A5A1A; }
+.prec-txt  { color: #7A3A00; }
+
+/* ── DESCRIPCIÓN ─────────────────────────────────────────── */
+/* ── AEROPUERTO ──────────────────────────────────────────── */
+.aero-block {
+  border-top: 1px solid var(--border);
+  padding: 14px 18px 4px;
+}
+.aero-ciudad {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 2px 0;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+.aero-nombre {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 8px 0;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+.aero-tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A5276;
+  background: rgba(26,82,118,0.08);
+  border: 1.5px solid rgba(26,82,118,0.3);
+  border-radius: 6px;
+  padding: 5px 12px;
+  text-decoration: none;
+}
+.aero-tel:hover { background: rgba(26,82,118,0.15); }
+.aero-btns-row {
+  display: flex; gap: 7px; flex-wrap: nowrap;
+  align-items: center; margin-bottom: 12px;
+}
+.aero-map-btn {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+  color: #1A5276; background: rgba(42,90,122,0.10);
+  border: 1px solid rgba(42,90,122,0.25); border-radius: 6px;
+  padding: 5px 12px; cursor: pointer; text-decoration: none;
+  transition: background 0.15s; box-sizing: border-box;
+  white-space: nowrap;
+}
+.aero-map-btn:hover { background: rgba(42,90,122,0.18); }
+
+
+
+/* ── METAR (NOAA Aviation Weather) ──────────────────────── */
+.metar-block {
+  border-top: 1px solid var(--border);
+  padding: 10px 0 4px;
+  margin-top: 8px;
+}
+.metar-loading {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--ink-lt); padding: 4px 0;
+}
+.metar-header {
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; margin-bottom: 8px;
+}
+.metar-badge {
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.5px; border-radius: 6px; padding: 4px 10px;
+}
+.metar-vfr  { background: rgba(30,120,30,0.10);  color: #1A5A1A; border: 1px solid rgba(30,120,30,0.28); }
+.metar-mvfr { background: rgba(180,130,0,0.10);  color: #5A4200; border: 1px solid rgba(180,130,0,0.30); }
+.metar-ifr  { background: rgba(180,30,30,0.10);  color: #7A0A0A; border: 1px solid rgba(180,30,30,0.28); }
+.metar-lifr { background: rgba(100,0,80,0.10);   color: #500050; border: 1px solid rgba(100,0,80,0.28);  }
+.metar-nd   { background: rgba(100,100,100,0.08);color: var(--ink-lt); border: 1px solid var(--border);  }
+.metar-hora {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  color: var(--ink-lt); margin-left: auto;
+}
+.metar-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 6px 10px; margin-bottom: 8px;
+}
+.metar-item {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.metar-item-full { grid-column: 1 / -1; }
+.metar-lbl {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; color: var(--ink-lt);
+}
+.metar-val {
+  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+  color: var(--ink);
+}
+.metar-raw-wrap {
+  margin-bottom: 6px;
+}
+.metar-raw-toggle {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+  color: var(--ink-lt); cursor: pointer; letter-spacing: 0.5px;
+  text-transform: uppercase; user-select: none;
+}
+.metar-raw-toggle:hover { color: var(--ink-md); }
+.metar-raw {
+  display: block; margin-top: 6px;
+  font-family: 'Courier New', monospace; font-size: 11px;
+  color: var(--ink-md); background: rgba(42,26,10,0.06);
+  border: 1px solid var(--border); border-radius: 5px;
+  padding: 7px 10px; line-height: 1.5;
+  word-break: break-all; white-space: pre-wrap;
+}
+.metar-credit {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  color: var(--ink-lt); margin: 0 0 4px; text-align: right;
+}
+.metar-credit a { color: var(--bronze); text-decoration: none; }
+.metar-credit a:hover { text-decoration: underline; }
+
+
+/* ── POI CERCANOS (Overpass/OSM) ────────────────────────── */
+.poi-block {
+  border-top: 1px solid var(--border);
+  padding: 12px 18px 4px;
+}
+.poi-loading {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--ink-lt); padding: 6px 0;
+}
+.poi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px 14px;
+  margin-bottom: 8px;
+}
+.poi-cat {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.poi-cat-title {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.7px;
+  color: var(--ink-md); padding-bottom: 2px;
+  border-bottom: 1px solid var(--border);
+}
+.poi-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.poi-item {
+  font-family: 'Inter', sans-serif; font-size: 12px;
+}
+.poi-link {
+  color: var(--bronze); text-decoration: none;
+  line-height: 1.4;
+}
+.poi-link:hover { text-decoration: underline; }
+.poi-credit {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  color: var(--ink-lt); margin: 4px 0 8px; text-align: right;
+}
+.poi-credit a { color: var(--bronze); text-decoration: none; }
+.poi-credit a:hover { text-decoration: underline; }
+
+.desc-block { padding: 12px 18px; border-bottom: 1px solid var(--border); }
+.desc-txt { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.75; color: var(--ink-md); }
+.detail-footer { height: 20px; }
+
+/* ── NO RESULTS ─────────────────────────────────────────── */
+.no-results { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; gap: 6px; color: var(--ink-lt); }
+.no-results-icon { font-size: 20px; opacity: 0.3; }
+.no-results-txt { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.4; text-align: center; }
+
+/* ── MAPS MODAL ──────────────────────────────────────────── */
+.maps-modal { display: none; position: fixed; inset: 0; background: rgba(30,10,5,0.72); z-index: 500; align-items: center; justify-content: center; padding: 12px; }
+.maps-modal.open { display: flex; }
+.maps-modal-inner { width: 100%; max-width: 820px; height: 78vh; background: var(--parch-light); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 12px 48px rgba(0,0,0,0.55); border: 2px solid var(--bronze); }
+.maps-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; background: var(--leather); flex-shrink: 0; }
+.maps-modal-header span { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: var(--parch); }
+.maps-close { background: none; border: none; color: rgba(232,216,176,0.7); font-size: 15px; cursor: pointer; padding: 2px 6px; border-radius: 3px; }
+.maps-close:hover { color: var(--parch); background: rgba(255,255,255,0.1); }
+.maps-frame { flex: 1; width: 100%; border: none; }
+
+/* ── VISTA MAPA IGN ──────────────────────────────────────── */
+.map-view-pill.active {
+  background: #1A3A5A;
+  border-color: #2A5A8A;
+  color: #fff;
+}
+.mapa-ign-panel {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 100;
+  background: var(--parch);
+  overflow: hidden;
+}
+/* Popup de Leaflet — estilo pergamino */
+.leaflet-popup-content-wrapper {
+  background: var(--parch-light) !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(42,26,10,0.18) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+.leaflet-popup-tip { background: var(--parch-light) !important; }
+.leaflet-popup-content { margin: 10px 14px !important; }
+.ign-popup-tipo {
+  font-size: 9px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; opacity: 0.55; margin-bottom: 2px;
+}
+.ign-popup-nombre {
+  font-size: 13px; font-weight: 700; color: var(--ink);
+  margin-bottom: 2px; line-height: 1.3;
+}
+.ign-popup-prov {
+  font-size: 11px; color: var(--ink-md); margin-bottom: 8px;
+}
+.ign-popup-btn {
+  display: inline-block; width: 100%;
+  background: var(--bronze); color: #fff;
+  border: none; border-radius: 5px;
+  padding: 5px 10px; font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; text-align: center;
+  transition: background 0.15s;
+}
+.ign-popup-btn:hover { background: var(--leather-md); }
+/* Marcadores personalizados por tipo */
+.ign-marker-icon {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 2.5px solid rgba(255,255,255,0.8);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  cursor: pointer;
+}
+
+/* ── AMANECER / ATARDECER ────────────────────────────────── */
+.sol-block {
+  border-top: 1px solid var(--border);
+  padding: 12px 18px 4px;
+}
+.sol-loading {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink-lt);
+  padding: 6px 0;
+}
+.sol-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.sol-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(160,85,42,0.06);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 8px;
+  gap: 3px;
+}
+.sol-icono { font-size: 20px; line-height: 1; }
+.sol-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--ink-lt);
+}
+.sol-hora {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.5px;
+}
+.sol-duracion { font-size: 15px; }
+.sol-credit {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--ink-lt);
+  text-align: right;
+  margin: 0 0 8px;
+}
+.sol-credit a { color: var(--bronze); text-decoration: none; }
+.sol-credit a:hover { text-decoration: underline; }
+.sol-item-wide { grid-column: span 2; }
+.sol-separator {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 10px 0 8px;
+}
+.sol-luna-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--ink-lt);
+  margin-bottom: 8px;
+}
+
+/* ── NASA FIRMS — INCENDIOS ──────────────────────────────── */
+.firms-block {
+  border-top: 1px solid var(--border);
+  padding: 12px 18px 4px;
+}
+.firms-loading {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--ink-lt); padding: 6px 0;
+}
+.firms-title { margin-bottom: 8px; }
+.firms-ok {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(30,120,30,0.08);
+  border: 1px solid rgba(30,120,30,0.25);
+  border-radius: 8px; padding: 10px 14px; margin-bottom: 8px;
+}
+.firms-ok-icon { font-size: 20px; }
+.firms-ok-txt {
+  font-family: 'Inter', sans-serif; font-size: 13px;
+  color: #1A5A1A; font-weight: 500; line-height: 1.4;
+}
+.firms-alert {
+  border-radius: 8px; padding: 12px 14px; margin-bottom: 8px;
+}
+.firms-red    { background: rgba(180,30,30,0.08); border: 1px solid rgba(180,30,30,0.35); }
+.firms-orange { background: rgba(200,100,20,0.08); border: 1px solid rgba(200,100,20,0.35); }
+.firms-yellow { background: rgba(180,150,20,0.08); border: 1px solid rgba(180,150,20,0.35); }
+.firms-nivel {
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+  margin-bottom: 6px; color: var(--ink);
+}
+.firms-stats {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  font-family: 'Inter', sans-serif; font-size: 13px;
+  color: var(--ink-md); margin-bottom: 10px;
+}
+.firms-stats strong { color: var(--ink); }
+.firms-link {
+  display: inline-flex; align-items: center;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+  color: #1A3A5A; text-decoration: none;
+  background: rgba(26,58,90,0.08); border: 1px solid rgba(26,58,90,0.25);
+  border-radius: 5px; padding: 4px 10px;
+  transition: background 0.15s;
+}
+.firms-link:hover { background: rgba(26,58,90,0.15); }
+.firms-credit {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  color: var(--ink-lt); margin: 0 0 8px; text-align: right;
+}
+.firms-credit a { color: var(--bronze); text-decoration: none; }
+.firms-credit a:hover { text-decoration: underline; }
+
+/* ── SISMOS USGS ─────────────────────────────────────────── */
+.sismo-block {
+  border-top: 1px solid var(--border);
+  padding: 12px 18px 4px;
+}
+.sismo-loading {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--ink-lt); padding: 6px 0;
+}
+.sismo-ok {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(30,120,30,0.08);
+  border: 1px solid rgba(30,120,30,0.25);
+  border-radius: 8px; padding: 10px 14px; margin-bottom: 8px;
+}
+.sismo-ok-icon { font-size: 20px; }
+.sismo-ok-txt {
+  font-family: 'Inter', sans-serif; font-size: 13px;
+  color: #1A5A1A; font-weight: 500; line-height: 1.4;
+}
+.sismo-alert {
+  border-radius: 8px; padding: 12px 14px; margin-bottom: 8px;
+}
+.sismo-red    { background: rgba(180,30,30,0.08); border: 1px solid rgba(180,30,30,0.35); }
+.sismo-orange { background: rgba(200,100,20,0.08); border: 1px solid rgba(200,100,20,0.35); }
+.sismo-yellow { background: rgba(180,150,20,0.08); border: 1px solid rgba(180,150,20,0.35); }
+.sismo-green  { background: rgba(30,120,30,0.06); border: 1px solid rgba(30,120,30,0.20); }
+.sismo-mag-row {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 5px;
+}
+.sismo-mag {
+  font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 700;
+  color: var(--ink); letter-spacing: -0.5px;
+}
+.sismo-nivel {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--ink-md);
+}
+.sismo-lugar {
+  font-family: 'Inter', sans-serif; font-size: 13px;
+  color: var(--ink); margin-bottom: 6px; line-height: 1.4;
+}
+.sismo-meta {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;
+  font-family: 'Inter', sans-serif; font-size: 12px; color: var(--ink-md);
+}
+.sismo-link {
+  display: inline-flex; align-items: center;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+  color: #1A3A5A; text-decoration: none;
+  background: rgba(26,58,90,0.08); border: 1px solid rgba(26,58,90,0.25);
+  border-radius: 5px; padding: 4px 10px; transition: background 0.15s;
+}
+.sismo-link:hover { background: rgba(26,58,90,0.15); }
+.sismo-credit {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  color: var(--ink-lt); margin: 0 0 8px; text-align: right;
+}
+.sismo-credit a { color: var(--bronze); text-decoration: none; }
+.sismo-credit a:hover { text-decoration: underline; }
+
+/* ── CONDICIONES MARINAS (Open-Meteo Marine) ─────────────── */
+.mar-block {
+  border-top: 1px solid var(--border);
+  padding: 12px 18px 4px;
+}
+.mar-loading {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--ink-lt); padding: 6px 0;
+}
+.mar-title { margin-bottom: 6px; }
+.mar-nivel-badge {
+  display: inline-block;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700;
+  letter-spacing: 0.5px; border-radius: 6px;
+  padding: 4px 12px; margin-bottom: 8px;
+}
+.mar-nivel-calm { background: rgba(30,120,30,0.10);  color: #1A5A1A; border: 1px solid rgba(30,120,30,0.25); }
+.mar-nivel-leve { background: rgba(180,150,20,0.10); color: #5A4A00; border: 1px solid rgba(180,150,20,0.35); }
+.mar-nivel-mod  { background: rgba(200,100,20,0.10); color: #7A3A00; border: 1px solid rgba(200,100,20,0.35); }
+.mar-nivel-alto { background: rgba(180,30,30,0.10);  color: #7A0000; border: 1px solid rgba(180,30,30,0.35); }
+.mar-tabla {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.mar-fila {
+  display: grid;
+  grid-template-columns: 18px 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-family: 'Inter', sans-serif;
+}
+.mar-fila-plea {
+  background: rgba(26,58,120,0.07);
+  border: 1px solid rgba(26,58,120,0.20);
+}
+.mar-fila-baja {
+  background: rgba(160,85,42,0.07);
+  border: 1px solid rgba(160,85,42,0.18);
+}
+.mar-fila-icon {
+  font-size: 11px;
+  text-align: center;
+  color: var(--ink-lt);
+}
+.mar-fila-plea .mar-fila-icon { color: #1A3A78; }
+.mar-fila-baja .mar-fila-icon { color: var(--bronze); }
+.mar-fila-tipo {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.8px; text-transform: uppercase;
+  color: var(--ink-md);
+}
+.mar-fila-plea .mar-fila-tipo { color: #1A3A78; }
+.mar-fila-baja .mar-fila-tipo { color: #7A4A18; }
+.mar-fila-hora {
+  font-size: 15px; font-weight: 600;
+  color: var(--ink); font-variant-numeric: tabular-nums;
+}
+.mar-fila-alt {
+  font-size: 14px; font-weight: 700;
+  color: var(--ink); font-variant-numeric: tabular-nums;
+  text-align: right; min-width: 52px;
+}
+.mar-credit {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  color: var(--ink-lt); margin: 0 0 8px; text-align: right;
+}
+.mar-credit a { color: var(--bronze); text-decoration: none; }
+.mar-credit a:hover { text-decoration: underline; }
+
+/* ── PERFIL ALTIMÉTRICO ──────────────────────────────────── */
+.perfil-block {
+  border-top: 1px solid var(--border);
+  padding: 12px 18px 8px;
+}
+.perfil-block:empty { display: none; }
+.perfil-loading {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--ink-lt); padding: 4px 0;
+}
+.perfil-svg-wrap {
+  background: rgba(242,232,204,0.4);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 6px 4px;
+  margin-bottom: 8px;
+}
+.perfil-stats {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 600;
+  color: var(--ink-md); margin-bottom: 6px;
+}
+.perfil-credit {
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  color: var(--ink-lt); text-align: right; margin: 0;
+}
+.perfil-credit a { color: var(--bronze); text-decoration: none; }
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 680px) {
+  html, body { overflow: hidden; }
+  .header-inner { flex-wrap: wrap; gap: 8px; }
+  .logo-area { flex: 1; }
+  .compass-svg { width: 40px; height: 40px; }
+  .app-title { font-size: 19px; }
+  .search-wrap { max-width: 100%; width: 100%; margin-left: 0; order: 3; flex-basis: 100%; }
+
+  /* Mobile: lista arriba, detalle abajo */
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    overflow: hidden;
+  }
+  .sidebar {
+    border-right: none;
+    border-bottom: 2px solid var(--leather-dk);
+    order: 1;
+    min-height: 0;
+    max-height: 60dvh;
+    overflow-y: auto;
+    transition: max-height 0.3s ease, border 0.3s ease;
+  }
+  .detail {
+    order: 2;
+    overflow-y: auto;
+    max-height: 40dvh;
+    transition: max-height 0.3s ease;
+  }
+  /* Sin selección: detail colapsa, lista ocupa todo */
+  .detail:has(.empty-state) {
+    max-height: 52px;
+    overflow: hidden;
+  }
+  .empty-state {
+    height: 44px;
+    padding: 0 16px;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .empty-txt { font-size: 13px; }
+
+  /* Con selección: sidebar desaparece totalmente, detail ocupa toda la pantalla */
+  .main.has-selection .sidebar {
+    max-height: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    border-bottom: none !important;
+    padding: 0 !important;
+    visibility: hidden;
+  }
+  .main.has-selection .detail {
+    max-height: 100dvh;
+  }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-title { font-size: 20px; }
+  .photos-pair { grid-template-columns: 1fr; }
+  .map-container img { max-height: 55vw; }
+  .toolbar { top: 94px; }
+  .maps-modal-inner { height: 85vh; }
+}
+@media (max-width: 400px) {
+  .app-title { font-size: 17px; }
+  .hero-title { font-size: 18px; }
+}
+
+/* ── Icono de ruta junto al título ─────────────────────── */
+
+/* ── Fila de iconos al pie del detalle ──────────────────── */
+.icon-grid {
+  margin-top: 0;
+  border-top: 1px solid var(--border);
+}
+.icon-stat {
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+  background: transparent;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+}
+.stat-ruta-icon {
+  height: 90px;
+  width: 90px;
+  max-width: 90%;
+  object-fit: contain;
+  image-rendering: auto;
+}
+/* Todos los íconos del grid al mismo tamaño, sin excepción */
+.icon-stat { overflow: hidden; }
+.icon-stat img {
+  width: 90px !important;
+  height: 90px !important;
+  max-width: 90px !important;
+  max-height: 90px !important;
+  object-fit: contain;
+}
+
+/* ── Bloque Parque Nacional (ícono + descripción) ────────── */
+.pn-nombre {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  margin: 6px 18px 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.pn-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 18px 8px 18px;
+  border-top: 1px solid var(--border);
+  gap: 14px;
+}
+.pn-icon {
+  width: 270px;
+  height: auto;        /* respeta el ratio original de cada escudo */
+  max-width: 90vw;
+  max-height: 300px;   /* tope para escudos muy altos */
+  object-fit: contain;
+}
+.master-icon {
+  width: 160px;
+  height: 160px;
+  max-width: 60vw;
+  object-fit: contain;
+}
+.pn-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--ink);
+  background: rgba(45,92,30,0.07);
+  border: 1px solid rgba(45,92,30,0.18);
+  border-left: 3px solid rgba(45,92,30,0.45);
+  border-radius: 4px;
+  white-space: pre-line;
+  padding: 10px 14px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── LIGHTBOX ─────────────────────────────────────────────── */
+#lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(8,4,2,0.97);
+  touch-action: none;
+  overflow: hidden;
+}
+#lb-overlay.open { display: block; }
+
+#lb-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  max-width: none;
+  max-height: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: grab;
+  will-change: transform;
+}
+#lb-img.grabbing { cursor: grabbing; }
+
+#lb-close {
+  position: absolute;
+  top: 14px; right: 16px;
+  z-index: 9020;           /* por encima del overlay */
+  width: 52px; height: 52px; /* más grande para touch */
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(30,15,5,0.75);
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(8px);
+  touch-action: auto;      /* permite el tap aunque el overlay tenga touch-action:none */
+  pointer-events: all;     /* forzar recepción de eventos */
+  -webkit-tap-highlight-color: rgba(255,255,255,0.2);
+}
+#lb-close:active { background: rgba(255,255,255,0.25); transform: scale(0.92); }
+#lb-badge {
+  position: absolute;
+  top: 16px; left: 16px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+#lb-hint {
+  position: absolute;
+  bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.4);
+  font-size: 12px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.map-container img { cursor: zoom-in; }
+
+/* ── ANIMACIÓN DE ENTRADA DEL DETALLE ───────────────────── */
+@keyframes detail-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.detail-enter {
+  animation: detail-slide-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── BOTÓN COMPARTIR ─────────────────────────────────────── */
+/* .share-btn hereda todo de .action-btn */
+
+/* ── TOAST ───────────────────────────────────────────────── */
+#share-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: rgba(20, 12, 6, 0.93);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 11px 22px;
+  border-radius: 28px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  /* display siempre block — la visibilidad se maneja con opacity+transform */
+  display: block;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  z-index: 99999;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+}
+#share-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── LUGARES DE INTERÉS ──────────────────────────────────── */
+.li-block {
+  padding: 14px 0 0 0;
+  border-top: 1px solid var(--border);
+}
+.li-block > .sec-title {
+  padding: 0 18px;
+  margin-bottom: 10px;
+}
+
+/* ── BOTÓN SIGUIENTE ─────────────────────────────────────── */
+/* hereda tamaño de .action-btn, solo color diferenciado */
+.next-btn { color: var(--bronze); }
+.next-btn:hover { border-color: var(--bronze); color: var(--ink); }
+
+/* ── ÍCONO COMPARTIDO EN LISTA (más grande, mismo tamaño) ── */
+.share-icon {
+  color: #2A5A7A;
+  font-size: 34px !important;
+}
+.route-item.active .share-icon { font-size: 40px !important; }
+
+/* ── PIE DE FOTO EN LUGARES DE INTERÉS ──────────────────── */
+.li-item {
+  width: 100%;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  /* Sin border-radius para que llegue de borde a borde */
+  margin-left: -0px;
+}
+.li-photo {
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  display: block;
+  object-fit: fill;   /* estira para ocupar todo el ancho sin recortar */
+  cursor: zoom-in;
+}
+.li-caption {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  background: rgba(90,58,26,0.06);
+  padding: 10px 18px;
+  margin: 0;
+  line-height: 1.7;
+  white-space: pre-line;
+  border-top: 1px solid var(--border);
+}
+
+/* ── ICONO MASTER ───────────────────────────────────────── */
+.master-block {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+  padding: 20px 18px;
+}
+
+/* ── BOTONES ANTERIOR / SIGUIENTE AL PIE ─────────────────── */
+.nav-footer {
+  display: flex;
+  gap: 10px;
+  padding: 16px 18px 10px;
+  border-top: 1px solid var(--border);
+}
+.nav-foot-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--bronze);
+  background: rgba(160,85,42,0.07);
+  border: 1.5px solid rgba(160,85,42,0.3);
+  border-radius: 6px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.nav-foot-btn:hover {
+  background: rgba(160,85,42,0.15);
+  border-color: var(--bronze);
+  color: var(--ink);
+}
+
+/* ── FIESTAS Y EVENTOS ───────────────────────────────────── */
+.fiestas-block { border-top: 1px solid var(--border); }
+.fiestas-txt {
+  font-size: 15px; line-height: 1.7;
+  color: var(--ink); margin: 0;
+  white-space: pre-line;
+}
+
+/* ── GRID DE ÍCONOS PN (idéntico al superior) ────────────── */
+/* ── TTS del Parque Nacional ──────────────────────────────── */
+.pn-desc-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; }
+.pn-tts-btn { margin: 10px auto 8px; }
+.pn-desc-wrap .pn-desc { width: 100%; }
+
+.pn-icons-grid {
+  border-top: 1px solid var(--border);
+  border-bottom: none;
+  margin-top: 0;
+}
+
+/* ── CONTACTO PN ─────────────────────────────────────────── */
+.contact-pn-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--border);
+}
+.contact-pn-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1A5276;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.contact-pn-link:hover { text-decoration: underline; }
+
+/* ── ETIQUETAS DE SECCIÓN PN ─────────────────────────────── */
+.pn-section-title {
+  /* Mismo estilo que .sec-title pero con borde superior para separar */
+  border-top: 1px solid rgba(160,85,42,0.25);
+  padding-top: 12px;
+  margin-bottom: 8px;
+}
+/* El bloque PN ya tiene su propio padding; la etiqueta se alinea dentro */
+.pn-block .pn-section-title {
+  padding: 12px 18px 0;
+  margin-bottom: 12px;
+  border-top: none; /* el borde ya lo pone el pn-block padre */
+}
+
+/* Sección de íconos PN con padding lateral para la etiqueta */
+.pn-icons-section {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.pn-icons-section .pn-section-title {
+  padding: 0 18px;
+  border-top: none;
+  margin-bottom: 8px;
+}
+.pn-icons-section .pn-icons-grid {
+  border-top: none;
+}
+
+/* Contacto PN con padding y etiqueta */
+.contact-pn-block {
+  border-top: 1px solid var(--border);
+  padding: 12px 18px 14px;
+}
+.contact-pn-block .pn-section-title {
+  border-top: none;
+  padding-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Ícono de contacto (tel y mail) del mismo tamaño */
+.contact-icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ── ÍCONOS DE SEGURIDAD PN (más grandes) ───────────────── */
+.pn-seg-grid {
+  border-top: none;
+}
+.pn-seg-grid .icon-stat {
+  min-height: 96px;
+}
+.pn-seg-grid .stat-ruta-icon {
+  width: 96px !important;
+  height: 96px !important;
+  max-width: 96px !important;
+  max-height: 96px !important;
+}
+
+/* ── WIDGET DE CLIMA ─────────────────────────────────────── */
+.weather-block {
+  border-top: 1px solid var(--border);
+  padding: 12px 0 0 0;
+}
+.weather-block .sec-title {
+  padding: 0 18px;
+  margin-bottom: 10px;
+}
+.weather-inner {
+  margin: 0 18px 4px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.weather-inner a.weatherwidget-io {
+  display: block;
+}
+.weather-inner-extra {
+  margin-top: 3px;
+}
+
+/* ── PASO FRONTERIZO ─────────────────────────────────────── */
+.pf-block {
+  border-top: 1px solid var(--border);
+  padding: 14px 18px 0;
+}
+.pf-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.pf-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.pf-title {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.pf-txt {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 0 8px 0;
+  white-space: pre-line;
+}
+.pf-nombre {
+  font-weight: 600;
+  font-size: 15px;
+}
+.pf-nombre-grande {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.pf-ciudades {
+  font-size: 13px;
+  color: var(--ink-md);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.pf-horario {
+  color: var(--ink-md);
+  font-weight: 500;
+}
+.pf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 6px 0 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A5276;
+  background: rgba(26,82,118,0.08);
+  border: 1.5px solid rgba(26,82,118,0.3);
+  border-radius: 6px;
+  padding: 9px 14px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.pf-btn:hover { background: rgba(26,82,118,0.16); }
+
+/* Semáforo PF */
+.pf-status {
+  margin: 4px 0 8px;
+  min-height: 24px;
+}
+.pf-abierto {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a7a3a;
+  background: rgba(26,122,58,0.10);
+  border: 1.5px solid rgba(26,122,58,0.30);
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+.pf-cerrado {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #9b1c1c;
+  background: rgba(155,28,28,0.10);
+  border: 1.5px solid rgba(155,28,28,0.30);
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+.pf-cerrado-siempre {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  background: rgba(0,0,0,0.06);
+  border: 1.5px solid rgba(0,0,0,0.15);
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+.pf-countdown {
+  font-weight: 500;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* ── PANEL PASO FRONTERIZO ───────────────────────────────── */
+#pf-panel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 8000;
+}
+#pf-panel.open { display: flex; align-items: flex-end; }
+
+.pf-panel-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,5,2,0.55);
+  backdrop-filter: blur(2px);
+}
+.pf-panel-box {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--parch-light);
+  border-top: 3px solid var(--bronze);
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  max-height: 85dvh;
+  display: flex;
+  flex-direction: column;
+}
+.pf-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.pf-panel-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+.pf-panel-close {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.5);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink);
+}
+.pf-panel-frame {
+  width: 100%;
+  flex: 1;
+  border: none;
+  min-height: 500px;
+}
+
+/* ── OPEN-METEO BLOCK (UV, Aire, Clima histórico) ─────────── */
+.openmeteo-block {
+  border-top: 1px solid var(--border);
+  padding: 12px 18px 8px;
+}
+.om-loading {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--ink-lt); padding: 6px 0;
+}
+.om-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px 12px;
+  margin-bottom: 10px;
+}
+.om-card {
+  background: rgba(var(--accent-rgb, 160,100,50), 0.06);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.om-card-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.6px;
+  color: var(--ink-lt);
+}
+.om-card-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.om-card-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; color: var(--ink-md);
+}
+/* Colores UV */
+.om-uv-bajo    { color: #4CAF50; }
+.om-uv-mod     { color: #FFC107; }
+.om-uv-alto    { color: #FF9800; }
+.om-uv-muyalto { color: #F44336; }
+.om-uv-extremo { color: #9C27B0; }
+/* Colores AQI */
+.om-aqi-bueno    { color: #4CAF50; }
+.om-aqi-regular  { color: #FFC107; }
+.om-aqi-malo     { color: #FF9800; }
+.om-aqi-muymalo  { color: #F44336; }
+.om-aqi-pesimo   { color: #9C27B0; }
+/* Dirección viento */
+.om-wind-arrow {
+  display: inline-block;
+  font-size: 16px;
+  transition: transform 0.3s;
+}
+/* Sección calidad aire */
+.om-section-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--bronze); margin: 10px 0 6px;
+  border-bottom: 1px solid var(--border); padding-bottom: 4px;
+}
+/* Selector mes historia */
+.om-mes-row {
+  display: flex; align-items: center; gap: 8px;
+  margin: 6px 0 8px;
+  flex-wrap: wrap;
+}
+.om-mes-select {
+  font-family: 'Inter', sans-serif; font-size: 12px;
+  padding: 4px 8px; border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg); color: var(--ink);
+  cursor: pointer;
+}
+.om-credit {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; color: var(--ink-lt);
+  margin: 4px 0 6px; text-align: right;
+}
+.om-credit a { color: var(--bronze); text-decoration: none; }
+.om-credit a:hover { text-decoration: underline; }
+
+/* ── PRECAUCIONES CON ÍCONOS ──────────────────────────────── */
+.prec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+.prec-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.prec-icon {
+  font-size: 17px;
+  line-height: 1.2;
+  flex-shrink: 0;
+  width: 22px;
+  text-align: center;
+}
+.prec-txt-item {
+  flex: 1;
+  padding-top: 1px;
+}
+
+/* ── BOTÓN DONACIÓN COMBUSTIBLE ──────────────────────────── */
+.fuel-pill {
+  background: linear-gradient(135deg, #f5a623 0%, #e8891a 100%);
+  color: #1a0a00 !important;
+  font-weight: 700;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(200,100,0,0.25);
+  transition: filter 0.15s, transform 0.1s;
+}
+.fuel-pill:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.fuel-pill:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+/* ── BOTÓN "¿A CUÁNTO QUEDA?" (app hermana — oculto por defecto) ────
+   Activar: poner FEATURE_DISTANCIAS = true en app.js.
+   Verde "cartel de ruta" — identidad propia de la app hermana
+   distancias-Argentinas (meteoro405.github.io/distancias-Argentinas) */
+.distancias-pill {
+  background: linear-gradient(135deg, #0a6b3d 0%, #085530 100%);
+  color: #f4f6f3 !important;
+  font-weight: 700;
+  border: 1px solid rgba(244,246,243,0.25);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(10,107,61,0.30);
+  transition: filter 0.15s, transform 0.1s;
+}
+.distancias-pill:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.distancias-pill:active {
+  transform: translateY(0);
+  filter: brightness(0.92);
+}
+
+/* ── BOTÓN FLOTANTE DONACIÓN (FAB) — mobile always visible ── */
+.fuel-fab {
+  display: none; /* oculto en desktop — en desktop está la toolbar */
+  position: fixed;
+  bottom: 18px;
+  right: 16px;
+  z-index: 999;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5a623 0%, #e8891a 100%);
+  color: #1a0a00;
+  font-size: 22px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(200,100,0,0.40);
+  transition: transform 0.15s, box-shadow 0.15s;
+  line-height: 1;
+}
+.fuel-fab:hover,
+.fuel-fab:focus {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(200,100,0,0.55);
+}
+.fuel-fab:active {
+  transform: scale(0.96);
+}
+/* Solo visible en pantallas mobile (≤640px) */
+@media (max-width: 640px) {
+  .fuel-fab {
+    display: flex;
+  }
+}
+
+/* ── MODAL DONACIÓN ────────────────────────────────────────── */
+.fuel-modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  z-index: 1100;
+  background: rgba(0,0,0,0.55);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.fuel-modal-overlay.open {
+  display: flex;
+}
+.fuel-modal-box {
+  background: linear-gradient(160deg, #3A1A06 0%, #5C2A0E 100%);
+  border: 2px solid var(--bronze-lt);
+  border-radius: 16px;
+  padding: 32px 28px 24px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.65);
+}
+.fuel-modal-close {
+  position: absolute; top: 12px; right: 14px;
+  background: none; border: none;
+  font-size: 18px; cursor: pointer;
+  color: var(--parch);
+  opacity: 0.7;
+  line-height: 1;
+  transition: opacity 0.15s;
+}
+.fuel-modal-close:hover { opacity: 1; }
+.fuel-modal-icon { font-size: 48px; margin-bottom: 8px; }
+.fuel-modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--parch);
+  margin: 0 0 12px;
+}
+.fuel-modal-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--parch-light);
+  line-height: 1.6;
+  margin: 0 0 20px;
+  opacity: 0.9;
+}
+.fuel-modal-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #009ee3 0%, #007db5 100%);
+  color: white !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,100,180,0.4);
+  transition: filter 0.15s;
+}
+.fuel-modal-btn:hover { filter: brightness(1.1); }
+.fuel-modal-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--parch);
+  opacity: 0.55;
+  margin: 10px 0 0;
+}
+/* FAB ahora es button, ajustar */
+button.fuel-fab {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Clase utilitaria para feature flags — gana sobre @media */
+.hidden-by-flag {
+  display: none !important;
+}
+
+/* Ocultar los FABs de apps hermanas cuando hay una ruta abierta.
+   app.js aplica esta clase directamente a cada FAB via JS
+   (sincronizada con .main.has-selection mediante MutationObserver). */
+.detail-open-hide {
+  display: none !important;
+}
+
+/* ── FAB ¿A CUÁNTO QUEDA? ────────────────────────────────── */
+.distancias-fab {
+  position: fixed;
+  bottom: 18px;
+  right: 16px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0a6b3d 0%, #085530 100%);
+  color: #f4f6f3;
+  font-size: 22px;
+  border: 2px solid rgba(244,246,243,0.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(10,107,61,0.45);
+  transition: transform 0.15s, box-shadow 0.15s;
+  line-height: 1;
+  cursor: pointer;
+}
+.distancias-fab:hover,
+.distancias-fab:focus {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(10,107,61,0.60);
+}
+.distancias-fab:active { transform: scale(0.96); }
+@media (max-width: 640px) {
+  .distancias-fab { display: flex; }
+  /* En mobile el FAB reemplaza al botón de toolbar */
+  #btnDistancias,
+  #distanciasSep { display: none !important; }
+}
+
+/* ── MODAL ¿A CUÁNTO QUEDA? ─────────────────────────────── */
+.distancias-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(0,0,0,0.65);
+  align-items: flex-end;
+  justify-content: center;
+}
+.distancias-modal-overlay.open {
+  display: flex;
+}
+.distancias-modal-box {
+  width: 100%;
+  max-width: 640px;
+  height: 92vh;
+  background: #FAF4E4;
+  border-radius: 18px 18px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.30);
+}
+@media (min-width: 641px) {
+  .distancias-modal-overlay {
+    align-items: center;
+    padding: 20px;
+  }
+  .distancias-modal-box {
+    height: 88vh;
+    border-radius: 14px;
+    max-width: 820px;
+  }
+}
+.distancias-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 10px;
+  background: #0a6b3d;
+  flex-shrink: 0;
+}
+.distancias-modal-title {
+  color: #f4f6f3;
+  font-weight: 700;
+  font-size: 15px;
+}
+.distancias-modal-close {
+  background: rgba(255,255,255,0.18);
+  border: none;
+  color: #f4f6f3;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.distancias-modal-close:hover { background: rgba(255,255,255,0.30); }
+.distancias-modal-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #f2e8cc;
+}
+
+/* ── FAB CAVOK ───────────────────────────────────────────── */
+.cavok-fab {
+  position: fixed;
+  bottom: 76px;           /* encima del FAB de distancias (18px + 50px + 8px gap) */
+  right: 16px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a3a5a 0%, #0f2540 100%);
+  color: #f4f6f3;
+  font-size: 22px;
+  border: 2px solid rgba(244,246,243,0.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(26,58,90,0.50);
+  transition: transform 0.15s, box-shadow 0.15s;
+  line-height: 1;
+  cursor: pointer;
+}
+.cavok-fab:hover,
+.cavok-fab:focus {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(26,58,90,0.65);
+}
+.cavok-fab:active { transform: scale(0.96); }
+@media (max-width: 640px) {
+  .cavok-fab { display: flex; }
+  #btnCavok, #cavokSep { display: none !important; }
+}
+
+/* ── PILL CAVOK (toolbar desktop) ───────────────────────── */
+.cavok-pill {
+  background: linear-gradient(135deg, #1a3a5a 0%, #0f2540 100%);
+  color: #f4f6f3 !important;
+  font-weight: 700;
+  border: 1px solid rgba(244,246,243,0.25);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(26,58,90,0.30);
+  transition: filter 0.15s, transform 0.1s;
+}
+.cavok-pill:hover  { filter: brightness(1.15); transform: translateY(-1px); }
+.cavok-pill:active { transform: translateY(0); filter: brightness(0.92); }
+
+/* ── FAB CONVERSOR ───────────────────────────────────────── */
+.conversor-fab {
+  position: fixed;
+  bottom: 134px;          /* encima de CAVOK (76px + 50px + 8px gap) */
+  right: 16px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0077b6 0%, #005a8e 100%);
+  color: #ffffff;
+  font-size: 19px;
+  border: 2px solid rgba(255,255,255,0.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,119,182,0.50);
+  transition: transform 0.15s, box-shadow 0.15s;
+  line-height: 1;
+  cursor: pointer;
+}
+.conversor-fab:hover,
+.conversor-fab:focus { transform: scale(1.08); box-shadow: 0 4px 16px rgba(0,119,182,0.65); }
+.conversor-fab:active { transform: scale(0.96); }
+@media (max-width: 640px) {
+  .conversor-fab { display: flex; }
+  #btnConversor, #conversorSep { display: none !important; }
+}
+
+/* ── PILL CONVERSOR (toolbar desktop) ───────────────────── */
+.conversor-pill {
+  background: linear-gradient(135deg, #0077b6 0%, #005a8e 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(0,119,182,0.30);
+  transition: filter 0.15s, transform 0.1s;
+}
+.conversor-pill:hover  { filter: brightness(1.15); transform: translateY(-1px); }
+.conversor-pill:active { transform: translateY(0); filter: brightness(0.92); }
+
+.install-banner {
+  position: fixed;
+  bottom: 76px;
+  left: 12px;
+  right: 12px;
+  z-index: 1050;
+  background: #FAF4E4;
+  border: 1.5px solid #A0552A;
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 12px rgba(42,26,10,0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.install-banner-txt {
+  font-size: 13px;
+  color: #2A1A0A;
+  line-height: 1.4;
+}
+.install-banner-btns {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.install-banner-ok {
+  background: #0a6b3d;
+  color: #f4f6f3;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 18px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+.install-banner-no {
+  background: transparent;
+  color: #5A3A20;
+  border: 1.5px solid rgba(160,85,42,0.25);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.install-banner-ios {
+  position: relative;
+  padding-right: 36px;
+}
+.install-banner-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #5A3A20;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* ── BOTÓN INSTALACIÓN PWA ───────────────────────────────── */
+.install-btn {
+  display: none; /* JS lo muestra cuando corresponde */
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1.5px solid var(--bronze-lt);
+  background: rgba(200,132,90,0.12);
+  color: var(--parch);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s, border-color 0.15s;
+  margin-left: 4px;
+}
+.install-btn:hover {
+  background: rgba(200,132,90,0.25);
+  border-color: var(--parch);
+  transform: translateY(-1px);
+}
+.install-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+/* Pequeña animación de rebote al aparecer */
+@keyframes install-bounce {
+  0%   { opacity: 0; transform: translateY(-4px); }
+  60%  { transform: translateY(2px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.install-btn[style*="flex"] {
+  animation: install-bounce 0.4s ease forwards;
+}
+
+/* ── SEPARADOR ENTRE MAPA 1 Y MAPA 2 ─────────────────────── */
+.map-sep {
+  height: 18px;
+}

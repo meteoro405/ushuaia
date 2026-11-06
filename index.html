@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-T7QQF346');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="theme-color" content="#7A3A18" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Caminos AR" />
+  <link rel="apple-touch-icon" href="pwa_icon_192.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>De Cuestas, Abras y Quebradas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7QQF346"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="app">
+
+    <header class="header">
+      <div class="header-inner">
+        <div class="compass-wrap">
+          <svg class="compass-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="dg" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#C8845A"/><stop offset="40%" stop-color="#A0552A"/><stop offset="100%" stop-color="#5C2A0E"/></radialGradient>
+              <radialGradient id="cg" cx="40%" cy="35%" r="60%"><stop offset="0%" stop-color="#D4956A"/><stop offset="100%" stop-color="#7A3A18"/></radialGradient>
+              <filter id="sh"><feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#2A1005" flood-opacity="0.6"/></filter>
+            </defs>
+            <circle cx="60" cy="60" r="57" fill="url(#dg)" filter="url(#sh)"/>
+            <circle cx="60" cy="60" r="54" fill="none" stroke="#7A3A18" stroke-width="1.5" opacity="0.6"/>
+            <g stroke="#9A5530" stroke-width="0.8" opacity="0.7"><line x1="60" y1="8" x2="60" y2="14"/><line x1="60" y1="106" x2="60" y2="112"/><line x1="8" y1="60" x2="14" y2="60"/><line x1="106" y1="60" x2="112" y2="60"/></g>
+            <polygon points="60,6 64,52 60,58 56,52" fill="#1A0A02"/>
+            <polygon points="60,114 64,68 60,62 56,68" fill="#1A0A02"/>
+            <polygon points="6,60 52,56 58,60 52,64" fill="#1A0A02"/>
+            <polygon points="114,60 68,56 62,60 68,64" fill="#1A0A02"/>
+            <polygon points="18,18 52,54 58,60 50,52" fill="#C07040"/>
+            <polygon points="102,18 68,54 62,60 70,52" fill="#C07040"/>
+            <polygon points="18,102 52,66 58,60 50,68" fill="#C07040"/>
+            <polygon points="102,102 68,66 62,60 70,68" fill="#C07040"/>
+            <circle cx="60" cy="60" r="18" fill="#6A3018" stroke="#C8845A" stroke-width="1"/>
+            <circle cx="60" cy="60" r="14" fill="url(#cg)" stroke="#9A5530" stroke-width="0.8"/>
+            <circle cx="60" cy="60" r="5" fill="#D4956A" stroke="#5C2A0E" stroke-width="1"/>
+            <circle cx="60" cy="60" r="2.5" fill="#1A0A02"/>
+            <text x="60" y="28" text-anchor="middle" font-family="serif" font-size="8" font-weight="bold" fill="#E8C090">N</text>
+            <polygon points="60,10 62,22 60,20 58,22" fill="#E8D0A0" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="logo-area">
+          <div class="app-title">De Cuestas, Abras y Quebradas</div>
+          <div class="app-sub">Caminos emblemáticos de la Argentina</div>
+        </div>
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input type="search" id="searchInput" class="search-input"
+            placeholder="Ingresá ruta, provincia o lugar"
+            autocomplete="off" spellcheck="false"/>
+          <button class="search-clear" id="searchClear" title="Limpiar">✕</button>
+          <button class="install-btn" id="installBtn" title="Instalar app" style="display:none">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v13M6 11l6 6 6-6"/><path d="M3 19h18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="toolbar" id="toolbarWrap">
+      <button class="pill map-view-pill" id="btnMapaView" onclick="toggleMapaView()">🗺 Mapa País</button>
+      <div class="toolbar-sep"></div>
+      <button class="pill filter-special fav-pill" id="btnFavs" onclick="filterSpecial('FAVORITOS',this)">♥ Favs</button>
+      <button class="pill filter-special done-pill" id="btnVisit" onclick="filterSpecial('VISITADOS',this)">✓ Visitados</button>
+      <div class="toolbar-sep hidden-by-flag" id="fuelSep"></div>
+      <button class="pill random-pill" onclick="showRandom()">🎲 Al azar</button>
+      <div class="toolbar-sep"></div>
+      <button class="pill fuel-pill hidden-by-flag" onclick="document.getElementById('fuelModal').classList.add('open')" title="Doná 1 litro de combustible para que la app siga rodando">⛽ Doná</button>
+      <div class="toolbar-sep hidden-by-flag" id="distanciasSep"></div>
+      <button class="pill distancias-pill hidden-by-flag" id="btnDistancias"
+              onclick="abrirDistanciasModal()"
+              title="¿A cuánto queda? — Distancias y tiempos entre 751 ciudades argentinas">📏 ¿A cuánto queda?</button>
+      <div class="toolbar-sep hidden-by-flag" id="cavokSep"></div>
+      <button class="pill cavok-pill hidden-by-flag" id="btnCavok"
+              onclick="abrirCavokModal()"
+              title="CAVOK — Meteorología aeronáutica en tiempo real">✈ CAVOK</button>
+      <div class="toolbar-sep hidden-by-flag" id="conversorSep"></div>
+      <button class="pill conversor-pill hidden-by-flag" id="btnConversor"
+              onclick="abrirConversorModal()"
+              title="Conversor de combustible — km/l ↔ l/100km">💧 Conversor</button>
+    </div>
+
+    <div class="main">
+      <aside class="sidebar">
+        <div class="sidebar-count" id="sideCount">— caminos</div>
+        <div id="sideList"></div>
+      </aside>
+      <section class="detail" id="detail">
+        <div class="empty-state">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="36" height="36" opacity="0.2">
+            <circle cx="60" cy="60" r="57" fill="#A0552A"/>
+            <polygon points="60,6 64,52 60,58 56,52" fill="#1A0A02"/>
+            <polygon points="60,114 64,68 60,62 56,68" fill="#1A0A02"/>
+            <polygon points="6,60 52,56 58,60 52,64" fill="#1A0A02"/>
+            <polygon points="114,60 68,56 62,60 68,64" fill="#1A0A02"/>
+            <polygon points="18,18 52,54 58,60 50,52" fill="#C07040"/>
+            <polygon points="102,18 68,54 62,60 70,52" fill="#C07040"/>
+            <polygon points="18,102 52,66 58,60 50,68" fill="#C07040"/>
+            <polygon points="102,102 68,66 62,60 70,68" fill="#C07040"/>
+            <circle cx="60" cy="60" r="14" fill="#7A3A18"/>
+            <circle cx="60" cy="60" r="5" fill="#D4956A"/>
+          </svg>
+          <div class="empty-txt">Seleccioná un camino</div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Panel Mapa IGN -->
+  <div class="mapa-ign-panel" id="mapaIgnPanel" style="display:none;">
+    <div id="mapaIgn" style="width:100%;height:100%;"></div>
+  </div>
+
+  <div class="maps-modal" id="mapsModal" onclick="closeMaps(event)">
+    <div class="maps-modal-inner">
+      <div class="maps-modal-header">
+        <span id="mapsTitle">Google Maps</span>
+        <button class="maps-close" onclick="closeMapsBtn()">✕</button>
+      </div>
+      <iframe id="mapsFrame" class="maps-frame" src="" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lb-overlay">
+    <img id="lb-img" src="" alt="" draggable="false"/>
+    <button id="lb-close" aria-label="Cerrar">✕</button>
+    <div id="lb-badge"></div>
+    <div id="lb-hint">Pellizco para zoom · Arrastrá para mover · Doble tap para zoom</div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+  </script>
+  <!-- Modal donación -->
+  <div class="fuel-modal-overlay" id="fuelModal" onclick="closeFuelModal(event)">
+    <div class="fuel-modal-box">
+      <button class="fuel-modal-close" onclick="document.getElementById('fuelModal').classList.remove('open')">✕</button>
+      <div class="fuel-modal-icon">⛽</div>
+      <h2 class="fuel-modal-title">Doná 1 litro de combustible</h2>
+      <p class="fuel-modal-text">Esta app es gratuita, sin publicidad y se desarrolla en el tiempo libre de su autor.<br>Si te fue útil en algún viaje, podés contribuir con el equivalente a 1 litro de combustible para que sigamos relevando rutas.</p>
+      <a class="fuel-modal-btn" href="https://link.mercadopago.com.ar/decuestas" target="_blank" rel="noopener" onclick="document.getElementById('fuelModal').classList.remove('open')">
+        Donar con MercadoPago
+      </a>
+      <p class="fuel-modal-sub">Monto libre · seguro · sin cuenta necesaria</p>
+    </div>
+  </div>
+
+  <!-- Botón flotante donación — visible en mobile (controlado por FEATURE_DONACION) -->
+  <button class="fuel-fab hidden-by-flag" id="fuelFab" onclick="document.getElementById('fuelModal').classList.add('open')"
+     title="Doná 1 litro de combustible para que la app siga rodando">
+    ⛽
+  </button>
+
+  <!-- Botón flotante ¿A cuánto queda? — visible en mobile (controlado por FEATURE_DISTANCIAS) -->
+  <button class="distancias-fab hidden-by-flag" id="distanciasFab"
+     onclick="abrirDistanciasModal()"
+     title="¿A cuánto queda? — Distancias entre ciudades argentinas">
+    📏
+  </button>
+
+  <!-- Botón flotante CAVOK — visible en mobile (controlado por FEATURE_CAVOK) -->
+  <button class="cavok-fab hidden-by-flag" id="cavokFab"
+     onclick="abrirCavokModal()"
+     title="CAVOK — Meteorología aeronáutica en tiempo real">
+    ✈
+  </button>
+
+  <!-- Botón flotante Conversor — visible en mobile (controlado por FEATURE_CONVERSOR) -->
+  <button class="conversor-fab hidden-by-flag" id="conversorFab"
+     onclick="abrirConversorModal()"
+     title="Conversor de combustible — km/l ↔ l/100km">
+    💧
+  </button>
+
+  <!-- Modal CAVOK (iframe interno) -->
+  <div class="distancias-modal-overlay" id="cavokModal">
+    <div class="distancias-modal-box">
+      <div class="distancias-modal-header" style="background:#1a3a5a;">
+        <span class="distancias-modal-title">✈ CAVOK · Meteorología aeronáutica</span>
+        <button class="distancias-modal-close" onclick="cerrarCavokModal()" title="Cerrar">✕</button>
+      </div>
+      <iframe class="distancias-modal-frame" id="cavokFrame"
+              src="" loading="lazy"
+              title="CAVOK — Meteorología aeronáutica"
+              allow="fullscreen"></iframe>
+    </div>
+  </div>
+  <div class="distancias-modal-overlay" id="distanciasModal">
+    <div class="distancias-modal-box">
+      <div class="distancias-modal-header">
+        <span class="distancias-modal-title">📏 ¿A cuánto queda?</span>
+        <button class="distancias-modal-close" onclick="cerrarDistanciasModal()" title="Cerrar">✕</button>
+      </div>
+      <iframe class="distancias-modal-frame" id="distanciasFrame"
+              src="" loading="lazy"
+              title="¿A cuánto queda? — distancias entre ciudades argentinas"
+              allow="fullscreen"></iframe>
+    </div>
+  </div>
+
+  <!-- Modal Conversor de combustible (iframe interno) -->
+  <div class="distancias-modal-overlay" id="conversorModal">
+    <div class="distancias-modal-box">
+      <div class="distancias-modal-header" style="background:#0077b6;">
+        <span class="distancias-modal-title">💧 Conversor de combustible</span>
+        <button class="distancias-modal-close" onclick="cerrarConversorModal()" title="Cerrar">✕</button>
+      </div>
+      <iframe class="distancias-modal-frame" id="conversorFrame"
+              src="" loading="lazy"
+              title="Conversor de combustible km/l ↔ l/100km"
+              allow="fullscreen"></iframe>
+    </div>
+  </div>
+
+  <!-- Banner instalación PWA (Android/Chrome) -->
+  <div class="install-banner" id="installBanner" style="display:none">
+    <span class="install-banner-txt">📲 Instalá la app para usarla sin internet</span>
+    <div class="install-banner-btns">
+      <button class="install-banner-ok" id="installBannerOk">Instalar</button>
+      <button class="install-banner-no" id="installBannerNo">Ahora no</button>
+    </div>
+  </div>
+
+  <!-- Banner Safari / iOS -->
+  <div class="install-banner install-banner-ios" id="installBannerIos" style="display:none">
+    <button class="install-banner-close" id="installBannerIosClose">✕</button>
+    <span class="install-banner-txt">Para instalar: tocá <strong>Compartir</strong> <span style="font-size:17px">⎙</span> y después <strong>«Agregar a pantalla de inicio»</strong></span>
+  </div>
+
+  <script>
+  function closeFuelModal(e) {
+    if (e.target === document.getElementById('fuelModal'))
+      document.getElementById('fuelModal').classList.remove('open');
+  }
+
+  // ── PWA Install ──────────────────────────────────────────
+  // Un único _installPrompt compartido
+  window._installPrompt = null;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    window._installPrompt = e;
+    // Mostrar banner solo si no rechazó antes en esta sesión
+    if (!sessionStorage.getItem('installDismissed')) {
+      const b = document.getElementById('installBanner');
+      if (b) b.style.display = 'flex';
+    }
+    // Botón del header también
+    const btn = document.getElementById('installBtn');
+    if (btn) btn.style.display = 'flex';
+  });
+
+  window.addEventListener('appinstalled', () => {
+    window._installPrompt = null;
+    const b = document.getElementById('installBanner');
+    if (b) b.style.display = 'none';
+    const btn = document.getElementById('installBtn');
+    if (btn) btn.style.display = 'none';
+  });
+
+  // Botón ↓ del header
+  const _installBtn = document.getElementById('installBtn');
+  if (_installBtn) {
+    _installBtn.addEventListener('click', async () => {
+      if (!window._installPrompt) return;
+      window._installPrompt.prompt();
+      const { outcome } = await window._installPrompt.userChoice;
+      window._installPrompt = null;
+      if (outcome === 'accepted') _installBtn.style.display = 'none';
+    });
+  }
+
+  // Botones del banner Android
+  const _bannerOk = document.getElementById('installBannerOk');
+  const _bannerNo = document.getElementById('installBannerNo');
+  const _banner   = document.getElementById('installBanner');
+
+  if (_bannerOk) {
+    _bannerOk.addEventListener('click', async () => {
+      if (_banner) _banner.style.display = 'none';
+      if (!window._installPrompt) return;
+      window._installPrompt.prompt();
+      const { outcome } = await window._installPrompt.userChoice;
+      window._installPrompt = null;
+      if (outcome === 'accepted') {
+        const btn = document.getElementById('installBtn');
+        if (btn) btn.style.display = 'none';
+      }
+    });
+  }
+  if (_bannerNo) {
+    _bannerNo.addEventListener('click', () => {
+      if (_banner) _banner.style.display = 'none';
+      sessionStorage.setItem('installDismissed', '1');
+    });
+  }
+
+  // Banner iOS / Safari
+  const _bannerIos  = document.getElementById('installBannerIos');
+  const _bannerIosX = document.getElementById('installBannerIosClose');
+  if (_bannerIosX) {
+    _bannerIosX.addEventListener('click', () => {
+      if (_bannerIos) _bannerIos.style.display = 'none';
+      sessionStorage.setItem('installDismissed', '1');
+    });
+  }
+  (function detectIos() {
+    const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                      || window.navigator.standalone;
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isIos && isSafari && !isStandalone && !sessionStorage.getItem('installDismissed')) {
+      if (_bannerIos) _bannerIos.style.display = 'flex';
+    }
+  })();
+
+  // ── Feature flags — aquí el DOM está garantizadamente listo ──
+  initFeatureFlags();
+  </script>
+</body>
+</html>
