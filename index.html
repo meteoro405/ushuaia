@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-T7QQF346');</script>
-  <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -15,10 +8,11 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Caminos AR" />
+  <meta name="apple-mobile-web-app-title" content="Ushuaia" />
   <link rel="apple-touch-icon" href="pwa_icon_192.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>De Cuestas, Abras y Quebradas</title>
+  <meta name="description" content="Guía de sitios de interés de Ushuaia, la ciudad del fin del mundo: horarios, ubicación, clima y qué ver en cada lugar." />
+  <title>Sitios de interés en Ushuaia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -26,10 +20,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7QQF346"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
   <div class="app">
 
     <header class="header">
@@ -61,13 +51,13 @@
           </svg>
         </div>
         <div class="logo-area">
-          <div class="app-title">De Cuestas, Abras y Quebradas</div>
-          <div class="app-sub">Caminos emblemáticos de la Argentina</div>
+          <div class="app-title">Sitios de interés en Ushuaia</div>
+          <div class="app-sub">La ciudad del fin del mundo</div>
         </div>
         <div class="search-wrap">
           <span class="search-icon">⌕</span>
           <input type="search" id="searchInput" class="search-input"
-            placeholder="Ingresá ruta, provincia o lugar"
+            placeholder="Buscá un sitio o lugar"
             autocomplete="off" spellcheck="false"/>
           <button class="search-clear" id="searchClear" title="Limpiar">✕</button>
           <button class="install-btn" id="installBtn" title="Instalar app" style="display:none">
@@ -80,31 +70,17 @@
     </header>
 
     <div class="toolbar" id="toolbarWrap">
-      <button class="pill map-view-pill" id="btnMapaView" onclick="toggleMapaView()">🗺 Mapa País</button>
+      <button class="pill map-view-pill" id="btnMapaView" onclick="toggleMapaView()">🗺 Mapa</button>
       <div class="toolbar-sep"></div>
       <button class="pill filter-special fav-pill" id="btnFavs" onclick="filterSpecial('FAVORITOS',this)">♥ Favs</button>
       <button class="pill filter-special done-pill" id="btnVisit" onclick="filterSpecial('VISITADOS',this)">✓ Visitados</button>
-      <div class="toolbar-sep hidden-by-flag" id="fuelSep"></div>
-      <button class="pill random-pill" onclick="showRandom()">🎲 Al azar</button>
       <div class="toolbar-sep"></div>
-      <button class="pill fuel-pill hidden-by-flag" onclick="document.getElementById('fuelModal').classList.add('open')" title="Doná 1 litro de combustible para que la app siga rodando">⛽ Doná</button>
-      <div class="toolbar-sep hidden-by-flag" id="distanciasSep"></div>
-      <button class="pill distancias-pill hidden-by-flag" id="btnDistancias"
-              onclick="abrirDistanciasModal()"
-              title="¿A cuánto queda? — Distancias y tiempos entre 751 ciudades argentinas">📏 ¿A cuánto queda?</button>
-      <div class="toolbar-sep hidden-by-flag" id="cavokSep"></div>
-      <button class="pill cavok-pill hidden-by-flag" id="btnCavok"
-              onclick="abrirCavokModal()"
-              title="CAVOK — Meteorología aeronáutica en tiempo real">✈ CAVOK</button>
-      <div class="toolbar-sep hidden-by-flag" id="conversorSep"></div>
-      <button class="pill conversor-pill hidden-by-flag" id="btnConversor"
-              onclick="abrirConversorModal()"
-              title="Conversor de combustible — km/l ↔ l/100km">💧 Conversor</button>
+      <button class="pill random-pill" onclick="showRandom()">🎲 Al azar</button>
     </div>
 
     <div class="main">
       <aside class="sidebar">
-        <div class="sidebar-count" id="sideCount">— caminos</div>
+        <div class="sidebar-count" id="sideCount">— sitios</div>
         <div id="sideList"></div>
       </aside>
       <section class="detail" id="detail">
@@ -122,17 +98,18 @@
             <circle cx="60" cy="60" r="14" fill="#7A3A18"/>
             <circle cx="60" cy="60" r="5" fill="#D4956A"/>
           </svg>
-          <div class="empty-txt">Seleccioná un camino</div>
+          <div class="empty-txt">Seleccioná un sitio</div>
         </div>
       </section>
     </div>
   </div>
 
-  <!-- Panel Mapa IGN -->
+  <!-- Panel mapa de la ciudad -->
   <div class="mapa-ign-panel" id="mapaIgnPanel" style="display:none;">
     <div id="mapaIgn" style="width:100%;height:100%;"></div>
   </div>
 
+  <!-- Modal Google Maps -->
   <div class="maps-modal" id="mapsModal" onclick="closeMaps(event)">
     <div class="maps-modal-inner">
       <div class="maps-modal-header">
@@ -151,97 +128,6 @@
     <div id="lb-hint">Pellizco para zoom · Arrastrá para mover · Doble tap para zoom</div>
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(() => {});
-      });
-    }
-  </script>
-  <!-- Modal donación -->
-  <div class="fuel-modal-overlay" id="fuelModal" onclick="closeFuelModal(event)">
-    <div class="fuel-modal-box">
-      <button class="fuel-modal-close" onclick="document.getElementById('fuelModal').classList.remove('open')">✕</button>
-      <div class="fuel-modal-icon">⛽</div>
-      <h2 class="fuel-modal-title">Doná 1 litro de combustible</h2>
-      <p class="fuel-modal-text">Esta app es gratuita, sin publicidad y se desarrolla en el tiempo libre de su autor.<br>Si te fue útil en algún viaje, podés contribuir con el equivalente a 1 litro de combustible para que sigamos relevando rutas.</p>
-      <a class="fuel-modal-btn" href="https://link.mercadopago.com.ar/decuestas" target="_blank" rel="noopener" onclick="document.getElementById('fuelModal').classList.remove('open')">
-        Donar con MercadoPago
-      </a>
-      <p class="fuel-modal-sub">Monto libre · seguro · sin cuenta necesaria</p>
-    </div>
-  </div>
-
-  <!-- Botón flotante donación — visible en mobile (controlado por FEATURE_DONACION) -->
-  <button class="fuel-fab hidden-by-flag" id="fuelFab" onclick="document.getElementById('fuelModal').classList.add('open')"
-     title="Doná 1 litro de combustible para que la app siga rodando">
-    ⛽
-  </button>
-
-  <!-- Botón flotante ¿A cuánto queda? — visible en mobile (controlado por FEATURE_DISTANCIAS) -->
-  <button class="distancias-fab hidden-by-flag" id="distanciasFab"
-     onclick="abrirDistanciasModal()"
-     title="¿A cuánto queda? — Distancias entre ciudades argentinas">
-    📏
-  </button>
-
-  <!-- Botón flotante CAVOK — visible en mobile (controlado por FEATURE_CAVOK) -->
-  <button class="cavok-fab hidden-by-flag" id="cavokFab"
-     onclick="abrirCavokModal()"
-     title="CAVOK — Meteorología aeronáutica en tiempo real">
-    ✈
-  </button>
-
-  <!-- Botón flotante Conversor — visible en mobile (controlado por FEATURE_CONVERSOR) -->
-  <button class="conversor-fab hidden-by-flag" id="conversorFab"
-     onclick="abrirConversorModal()"
-     title="Conversor de combustible — km/l ↔ l/100km">
-    💧
-  </button>
-
-  <!-- Modal CAVOK (iframe interno) -->
-  <div class="distancias-modal-overlay" id="cavokModal">
-    <div class="distancias-modal-box">
-      <div class="distancias-modal-header" style="background:#1a3a5a;">
-        <span class="distancias-modal-title">✈ CAVOK · Meteorología aeronáutica</span>
-        <button class="distancias-modal-close" onclick="cerrarCavokModal()" title="Cerrar">✕</button>
-      </div>
-      <iframe class="distancias-modal-frame" id="cavokFrame"
-              src="" loading="lazy"
-              title="CAVOK — Meteorología aeronáutica"
-              allow="fullscreen"></iframe>
-    </div>
-  </div>
-  <div class="distancias-modal-overlay" id="distanciasModal">
-    <div class="distancias-modal-box">
-      <div class="distancias-modal-header">
-        <span class="distancias-modal-title">📏 ¿A cuánto queda?</span>
-        <button class="distancias-modal-close" onclick="cerrarDistanciasModal()" title="Cerrar">✕</button>
-      </div>
-      <iframe class="distancias-modal-frame" id="distanciasFrame"
-              src="" loading="lazy"
-              title="¿A cuánto queda? — distancias entre ciudades argentinas"
-              allow="fullscreen"></iframe>
-    </div>
-  </div>
-
-  <!-- Modal Conversor de combustible (iframe interno) -->
-  <div class="distancias-modal-overlay" id="conversorModal">
-    <div class="distancias-modal-box">
-      <div class="distancias-modal-header" style="background:#0077b6;">
-        <span class="distancias-modal-title">💧 Conversor de combustible</span>
-        <button class="distancias-modal-close" onclick="cerrarConversorModal()" title="Cerrar">✕</button>
-      </div>
-      <iframe class="distancias-modal-frame" id="conversorFrame"
-              src="" loading="lazy"
-              title="Conversor de combustible km/l ↔ l/100km"
-              allow="fullscreen"></iframe>
-    </div>
-  </div>
-
   <!-- Banner instalación PWA (Android/Chrome) -->
   <div class="install-banner" id="installBanner" style="display:none">
     <span class="install-banner-txt">📲 Instalá la app para usarla sin internet</span>
@@ -257,57 +143,39 @@
     <span class="install-banner-txt">Para instalar: tocá <strong>Compartir</strong> <span style="font-size:17px">⎙</span> y después <strong>«Agregar a pantalla de inicio»</strong></span>
   </div>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
   <script>
-  function closeFuelModal(e) {
-    if (e.target === document.getElementById('fuelModal'))
-      document.getElementById('fuelModal').classList.remove('open');
-  }
-
-  // ── PWA Install ──────────────────────────────────────────
-  // Un único _installPrompt compartido
-  window._installPrompt = null;
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    window._installPrompt = e;
-    // Mostrar banner solo si no rechazó antes en esta sesión
-    if (!sessionStorage.getItem('installDismissed')) {
-      const b = document.getElementById('installBanner');
-      if (b) b.style.display = 'flex';
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
     }
-    // Botón del header también
-    const btn = document.getElementById('installBtn');
-    if (btn) btn.style.display = 'flex';
-  });
 
-  window.addEventListener('appinstalled', () => {
+    // ── PWA Install ──────────────────────────────────────────
     window._installPrompt = null;
-    const b = document.getElementById('installBanner');
-    if (b) b.style.display = 'none';
-    const btn = document.getElementById('installBtn');
-    if (btn) btn.style.display = 'none';
-  });
 
-  // Botón ↓ del header
-  const _installBtn = document.getElementById('installBtn');
-  if (_installBtn) {
-    _installBtn.addEventListener('click', async () => {
-      if (!window._installPrompt) return;
-      window._installPrompt.prompt();
-      const { outcome } = await window._installPrompt.userChoice;
-      window._installPrompt = null;
-      if (outcome === 'accepted') _installBtn.style.display = 'none';
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      window._installPrompt = e;
+      if (!sessionStorage.getItem('installDismissed')) {
+        const b = document.getElementById('installBanner');
+        if (b) b.style.display = 'flex';
+      }
+      const btn = document.getElementById('installBtn');
+      if (btn) btn.style.display = 'flex';
     });
-  }
 
-  // Botones del banner Android
-  const _bannerOk = document.getElementById('installBannerOk');
-  const _bannerNo = document.getElementById('installBannerNo');
-  const _banner   = document.getElementById('installBanner');
+    window.addEventListener('appinstalled', () => {
+      window._installPrompt = null;
+      const b = document.getElementById('installBanner');
+      if (b) b.style.display = 'none';
+      const btn = document.getElementById('installBtn');
+      if (btn) btn.style.display = 'none';
+    });
 
-  if (_bannerOk) {
-    _bannerOk.addEventListener('click', async () => {
-      if (_banner) _banner.style.display = 'none';
+    async function pedirInstalacion() {
       if (!window._installPrompt) return;
       window._installPrompt.prompt();
       const { outcome } = await window._installPrompt.userChoice;
@@ -316,36 +184,28 @@
         const btn = document.getElementById('installBtn');
         if (btn) btn.style.display = 'none';
       }
-    });
-  }
-  if (_bannerNo) {
-    _bannerNo.addEventListener('click', () => {
-      if (_banner) _banner.style.display = 'none';
-      sessionStorage.setItem('installDismissed', '1');
-    });
-  }
-
-  // Banner iOS / Safari
-  const _bannerIos  = document.getElementById('installBannerIos');
-  const _bannerIosX = document.getElementById('installBannerIosClose');
-  if (_bannerIosX) {
-    _bannerIosX.addEventListener('click', () => {
-      if (_bannerIos) _bannerIos.style.display = 'none';
-      sessionStorage.setItem('installDismissed', '1');
-    });
-  }
-  (function detectIos() {
-    const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
-                      || window.navigator.standalone;
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    if (isIos && isSafari && !isStandalone && !sessionStorage.getItem('installDismissed')) {
-      if (_bannerIos) _bannerIos.style.display = 'flex';
     }
-  })();
-
-  // ── Feature flags — aquí el DOM está garantizadamente listo ──
-  initFeatureFlags();
+    document.getElementById('installBtn').addEventListener('click', pedirInstalacion);
+    document.getElementById('installBannerOk').addEventListener('click', () => {
+      document.getElementById('installBanner').style.display = 'none';
+      pedirInstalacion();
+    });
+    document.getElementById('installBannerNo').addEventListener('click', () => {
+      document.getElementById('installBanner').style.display = 'none';
+      sessionStorage.setItem('installDismissed', '1');
+    });
+    document.getElementById('installBannerIosClose').addEventListener('click', () => {
+      document.getElementById('installBannerIos').style.display = 'none';
+      sessionStorage.setItem('installDismissed', '1');
+    });
+    (function detectIos() {
+      const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      if (isIos && isSafari && !isStandalone && !sessionStorage.getItem('installDismissed')) {
+        document.getElementById('installBannerIos').style.display = 'flex';
+      }
+    })();
   </script>
 </body>
 </html>

@@ -1,0 +1,17 @@
+{
+  "name": "Sitios de interés en Ushuaia",
+  "short_name": "Ushuaia",
+  "description": "Guía de sitios de interés de Ushuaia, la ciudad del fin del mundo.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#E8D8B0",
+  "theme_color": "#7A3A18",
+  "lang": "es-AR",
+  "icons": [
+    { "src": "pwa_icon_192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "pwa_icon_512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "pwa_icon_512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
