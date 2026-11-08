@@ -1,0 +1,20 @@
+AUDIOGUÍA USHUAIA — PAQUETE DE PRUEBA
+
+Contenido:
+- index.html: portada de la sección audioguía.
+- estaciones/plaza-civica.html: página de la estación 01.
+- audios/plaza-civica.mp3: audio convertido desde el archivo MP4 recibido.
+
+INSTALACIÓN:
+1. En el repositorio meteoro405/ushuaia, creá una carpeta llamada audioguia (si todavía no existe).
+2. Subí dentro de ella el contenido de esta carpeta, respetando la estructura:
+   audioguia/index.html
+   audioguia/estaciones/plaza-civica.html
+   audioguia/audios/plaza-civica.mp3
+3. No reemplaces ni edites los archivos que ya están en la raíz del repositorio.
+4. Cuando GitHub Pages publique los cambios, probá primero la página:
+   https://meteoro405.github.io/ushuaia/audioguia/estaciones/plaza-civica.html
+
+IMPORTANTE:
+El QR definitivo se genera después de confirmar que esa dirección pública abre correctamente.
+El audio se reproduce en línea; el visitante debe tocar Play.
