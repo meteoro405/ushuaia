@@ -85,5 +85,5 @@ const DATA = [
 /* Color de acento por categoría (la categoría viene de la columna "LUGAR DE INTERES").
    Si agregás una categoría nueva en el CSV, sumale un color acá (si no, usa el marrón por defecto). */
 const TIPO_COLORS = {
-  "LUGAR DE INTERES": "#7A3A18"
+  "LUGAR DE INTERES": "#1F5A8F"
 };

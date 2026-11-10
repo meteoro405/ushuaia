@@ -470,7 +470,7 @@ function renderDetail(d) {
   pauseAudios();
   currentDetail = d;
   const slug  = slugify(d.nombre);
-  const color = (typeof TIPO_COLORS !== 'undefined' && TIPO_COLORS[d.tipo]) || '#7A3A18';
+  const color = (typeof TIPO_COLORS !== 'undefined' && TIPO_COLORS[d.tipo]) || '#1F5A8F';
   const k = itemKey(d), isFav = !!getFavs()[k], isDone = !!getDones()[k];
   const coords = hasCoords(d);
 
@@ -581,13 +581,7 @@ function renderDetail(d) {
 
 function emptyState() {
   return '<div class="empty-state">' +
-    '<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="36" height="36" opacity="0.2">' +
-      '<circle cx="60" cy="60" r="57" fill="#A0552A"/>' +
-      '<polygon points="60,6 64,52 60,58 56,52" fill="#1A0A02"/><polygon points="60,114 64,68 60,62 56,68" fill="#1A0A02"/>' +
-      '<polygon points="6,60 52,56 58,60 52,64" fill="#1A0A02"/><polygon points="114,60 68,56 62,60 68,64" fill="#1A0A02"/>' +
-      '<polygon points="18,18 52,54 58,60 50,52" fill="#C07040"/><polygon points="102,18 68,54 62,60 70,52" fill="#C07040"/>' +
-      '<polygon points="18,102 52,66 58,60 50,68" fill="#C07040"/><polygon points="102,102 68,66 62,60 70,68" fill="#C07040"/>' +
-      '<circle cx="60" cy="60" r="14" fill="#7A3A18"/><circle cx="60" cy="60" r="5" fill="#D4956A"/></svg>' +
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="44" height="44" opacity="0.35" aria-hidden="true"><defs><linearGradient id="pg-bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6F3FD"/><stop offset="1" stop-color="#9CC8EA"/></linearGradient></defs><!-- fondo circular celeste --><circle cx="60" cy="60" r="57" fill="url(#pg-bg2)" stroke="#FFFFFF" stroke-width="3"/><!-- sombra en el hielo --><ellipse cx="60" cy="103" rx="30" ry="5" fill="#0F3558" opacity="0.18"/><!-- aletas --><path d="M37 62 C24 68 20 88 27 98 C36 92 41 80 41 66 Z" fill="#12263A"/><path d="M83 62 C96 68 100 88 93 98 C84 92 79 80 79 66 Z" fill="#12263A"/><!-- cuerpo --><path d="M60 14 C41 14 33 31 33 51 C33 77 38 99 60 99 C82 99 87 77 87 51 C87 31 79 14 60 14 Z" fill="#12263A"/><!-- panza --><path d="M60 52 C48 52 43 65 43 78 C43 91 49 97 60 97 C71 97 77 91 77 78 C77 65 72 52 60 52 Z" fill="#FFFFFF"/><!-- parches blancos de la cara --><circle cx="51" cy="38" r="10" fill="#FFFFFF"/><circle cx="69" cy="38" r="10" fill="#FFFFFF"/><!-- ojos --><circle cx="52" cy="39" r="4.2" fill="#12263A"/><circle cx="68" cy="39" r="4.2" fill="#12263A"/><circle cx="53.4" cy="37.6" r="1.4" fill="#FFFFFF"/><circle cx="69.4" cy="37.6" r="1.4" fill="#FFFFFF"/><!-- pico --><path d="M53 46 Q60 41 67 46 Q60 57 53 46 Z" fill="#F5A623"/><!-- bufanda --><path d="M39 57 Q60 69 81 57 L81 65 Q60 77 39 65 Z" fill="#3F8FD0"/><path d="M49 63 Q60 68 71 63 L71 66 Q60 71 49 66 Z" fill="#FFFFFF" opacity="0.9"/><path d="M72 66 L81 63 L84 80 L75 82 Z" fill="#3F8FD0"/><!-- patas --><ellipse cx="50" cy="99" rx="10" ry="4.5" fill="#F5A623"/><ellipse cx="70" cy="99" rx="10" ry="4.5" fill="#F5A623"/></svg>' +
     '<div class="empty-txt">Seleccioná un sitio</div></div>';
 }
 
@@ -916,7 +910,7 @@ function initMapa() {
   const puntos = [];
   DATA.forEach(d => {
     if (d.hidden || !hasCoords(d)) return;
-    const color = (typeof TIPO_COLORS !== 'undefined' && TIPO_COLORS[d.tipo]) || '#7A3A18';
+    const color = (typeof TIPO_COLORS !== 'undefined' && TIPO_COLORS[d.tipo]) || '#1F5A8F';
     const icon = L.divIcon({
       className: '', html: '<div class="ign-marker-icon" style="background:' + color + ';"></div>',
       iconSize: [20, 20], iconAnchor: [10, 10], popupAnchor: [0, -12]

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="pg-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E6F3FD"/><stop offset="1" stop-color="#9CC8EA"/>
+    </linearGradient>
+  </defs>
+  <!-- fondo circular celeste -->
+  <circle cx="60" cy="60" r="57" fill="url(#pg-bg)" stroke="#FFFFFF" stroke-width="3"/>
+  <!-- sombra en el hielo -->
+  <ellipse cx="60" cy="103" rx="30" ry="5" fill="#0F3558" opacity="0.18"/>
+  <!-- aletas -->
+  <path d="M37 62 C24 68 20 88 27 98 C36 92 41 80 41 66 Z" fill="#12263A"/>
+  <path d="M83 62 C96 68 100 88 93 98 C84 92 79 80 79 66 Z" fill="#12263A"/>
+  <!-- cuerpo -->
+  <path d="M60 14 C41 14 33 31 33 51 C33 77 38 99 60 99 C82 99 87 77 87 51 C87 31 79 14 60 14 Z" fill="#12263A"/>
+  <!-- panza -->
+  <path d="M60 52 C48 52 43 65 43 78 C43 91 49 97 60 97 C71 97 77 91 77 78 C77 65 72 52 60 52 Z" fill="#FFFFFF"/>
+  <!-- parches blancos de la cara -->
+  <circle cx="51" cy="38" r="10" fill="#FFFFFF"/>
+  <circle cx="69" cy="38" r="10" fill="#FFFFFF"/>
+  <!-- ojos -->
+  <circle cx="52" cy="39" r="4.2" fill="#12263A"/>
+  <circle cx="68" cy="39" r="4.2" fill="#12263A"/>
+  <circle cx="53.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
+  <circle cx="69.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
+  <!-- pico -->
+  <path d="M53 46 Q60 41 67 46 Q60 57 53 46 Z" fill="#F5A623"/>
+  <!-- bufanda -->
+  <path d="M39 57 Q60 69 81 57 L81 65 Q60 77 39 65 Z" fill="#3F8FD0"/>
+  <path d="M49 63 Q60 68 71 63 L71 66 Q60 71 49 66 Z" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M72 66 L81 63 L84 80 L75 82 Z" fill="#3F8FD0"/>
+  <!-- patas -->
+  <ellipse cx="50" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
+  <ellipse cx="70" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
+</svg>

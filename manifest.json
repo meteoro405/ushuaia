@@ -1,13 +1,13 @@
 {
-  "name": "Sitios de interés en Ushuaia",
+  "name": "Ushuaia cuenta su historia",
   "short_name": "Ushuaia",
-  "description": "Guía de sitios de interés de Ushuaia, la ciudad del fin del mundo.",
+  "description": "Una ciudad, muchas historias. Audioguía de las estaciones de Ushuaia.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#E8D8B0",
-  "theme_color": "#7A3A18",
+  "background_color": "#DCE9F5",
+  "theme_color": "#1F5A8F",
   "lang": "es-AR",
   "icons": [
     { "src": "pwa_icon_192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },

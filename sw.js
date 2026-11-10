@@ -1,7 +1,7 @@
 /* sw.js — Sitios de interés en Ushuaia
    IMPORTANTE: al publicar cambios en el código, subí el número de versión de CACHE
    (v1 -> v2 -> ...) para que los celulares descarguen la versión nueva. */
-const CACHE = 'sitios-ushuaia-v2';
+const CACHE = 'sitios-ushuaia-v3';
 
 /* App shell para que abra sin internet (solo archivos que EXISTEN en el repo) */
 const PRECACHE = [

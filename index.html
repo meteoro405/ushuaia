@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <meta name="theme-color" content="#7A3A18" />
+  <meta name="theme-color" content="#1F5A8F" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Ushuaia" />
   <link rel="apple-touch-icon" href="pwa_icon_192.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="description" content="Guía de sitios de interés de Ushuaia, la ciudad del fin del mundo: horarios, ubicación, clima y qué ver en cada lugar." />
-  <title>Sitios de interés en Ushuaia</title>
+  <meta name="description" content="Ushuaia cuenta su historia: una ciudad, muchas historias. Recorré las estaciones con audioguía, horarios, ubicación y clima." />
+  <title>Ushuaia cuenta su historia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -25,39 +25,50 @@
     <header class="header">
       <div class="header-inner">
         <div class="compass-wrap">
-          <svg class="compass-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="dg" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#C8845A"/><stop offset="40%" stop-color="#A0552A"/><stop offset="100%" stop-color="#5C2A0E"/></radialGradient>
-              <radialGradient id="cg" cx="40%" cy="35%" r="60%"><stop offset="0%" stop-color="#D4956A"/><stop offset="100%" stop-color="#7A3A18"/></radialGradient>
-              <filter id="sh"><feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#2A1005" flood-opacity="0.6"/></filter>
-            </defs>
-            <circle cx="60" cy="60" r="57" fill="url(#dg)" filter="url(#sh)"/>
-            <circle cx="60" cy="60" r="54" fill="none" stroke="#7A3A18" stroke-width="1.5" opacity="0.6"/>
-            <g stroke="#9A5530" stroke-width="0.8" opacity="0.7"><line x1="60" y1="8" x2="60" y2="14"/><line x1="60" y1="106" x2="60" y2="112"/><line x1="8" y1="60" x2="14" y2="60"/><line x1="106" y1="60" x2="112" y2="60"/></g>
-            <polygon points="60,6 64,52 60,58 56,52" fill="#1A0A02"/>
-            <polygon points="60,114 64,68 60,62 56,68" fill="#1A0A02"/>
-            <polygon points="6,60 52,56 58,60 52,64" fill="#1A0A02"/>
-            <polygon points="114,60 68,56 62,60 68,64" fill="#1A0A02"/>
-            <polygon points="18,18 52,54 58,60 50,52" fill="#C07040"/>
-            <polygon points="102,18 68,54 62,60 70,52" fill="#C07040"/>
-            <polygon points="18,102 52,66 58,60 50,68" fill="#C07040"/>
-            <polygon points="102,102 68,66 62,60 70,68" fill="#C07040"/>
-            <circle cx="60" cy="60" r="18" fill="#6A3018" stroke="#C8845A" stroke-width="1"/>
-            <circle cx="60" cy="60" r="14" fill="url(#cg)" stroke="#9A5530" stroke-width="0.8"/>
-            <circle cx="60" cy="60" r="5" fill="#D4956A" stroke="#5C2A0E" stroke-width="1"/>
-            <circle cx="60" cy="60" r="2.5" fill="#1A0A02"/>
-            <text x="60" y="28" text-anchor="middle" font-family="serif" font-size="8" font-weight="bold" fill="#E8C090">N</text>
-            <polygon points="60,10 62,22 60,20 58,22" fill="#E8D0A0" opacity="0.9"/>
-          </svg>
+          <svg class="compass-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Pingüino">
+  <defs>
+    <linearGradient id="pg-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E6F3FD"/><stop offset="1" stop-color="#9CC8EA"/>
+    </linearGradient>
+  </defs>
+  <!-- fondo circular celeste -->
+  <circle cx="60" cy="60" r="57" fill="url(#pg-bg)" stroke="#FFFFFF" stroke-width="3"/>
+  <!-- sombra en el hielo -->
+  <ellipse cx="60" cy="103" rx="30" ry="5" fill="#0F3558" opacity="0.18"/>
+  <!-- aletas -->
+  <path d="M37 62 C24 68 20 88 27 98 C36 92 41 80 41 66 Z" fill="#12263A"/>
+  <path d="M83 62 C96 68 100 88 93 98 C84 92 79 80 79 66 Z" fill="#12263A"/>
+  <!-- cuerpo -->
+  <path d="M60 14 C41 14 33 31 33 51 C33 77 38 99 60 99 C82 99 87 77 87 51 C87 31 79 14 60 14 Z" fill="#12263A"/>
+  <!-- panza -->
+  <path d="M60 52 C48 52 43 65 43 78 C43 91 49 97 60 97 C71 97 77 91 77 78 C77 65 72 52 60 52 Z" fill="#FFFFFF"/>
+  <!-- parches blancos de la cara -->
+  <circle cx="51" cy="38" r="10" fill="#FFFFFF"/>
+  <circle cx="69" cy="38" r="10" fill="#FFFFFF"/>
+  <!-- ojos -->
+  <circle cx="52" cy="39" r="4.2" fill="#12263A"/>
+  <circle cx="68" cy="39" r="4.2" fill="#12263A"/>
+  <circle cx="53.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
+  <circle cx="69.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
+  <!-- pico -->
+  <path d="M53 46 Q60 41 67 46 Q60 57 53 46 Z" fill="#F5A623"/>
+  <!-- bufanda -->
+  <path d="M39 57 Q60 69 81 57 L81 65 Q60 77 39 65 Z" fill="#3F8FD0"/>
+  <path d="M49 63 Q60 68 71 63 L71 66 Q60 71 49 66 Z" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M72 66 L81 63 L84 80 L75 82 Z" fill="#3F8FD0"/>
+  <!-- patas -->
+  <ellipse cx="50" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
+  <ellipse cx="70" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
+</svg>
         </div>
         <div class="logo-area">
-          <div class="app-title">Sitios de interés en Ushuaia</div>
-          <div class="app-sub">La ciudad del fin del mundo</div>
+          <div class="app-title">Ushuaia cuenta su historia</div>
+          <div class="app-sub">Una ciudad, muchas historias. Descubrila.</div>
         </div>
         <div class="search-wrap">
           <span class="search-icon">⌕</span>
           <input type="search" id="searchInput" class="search-input"
-            placeholder="Buscá un sitio o lugar"
+            placeholder="Buscá una estación o un lugar"
             autocomplete="off" spellcheck="false"/>
           <button class="search-clear" id="searchClear" title="Limpiar">✕</button>
           <button class="install-btn" id="installBtn" title="Instalar app" style="display:none">
@@ -85,19 +96,41 @@
       </aside>
       <section class="detail" id="detail">
         <div class="empty-state">
-          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="36" height="36" opacity="0.2">
-            <circle cx="60" cy="60" r="57" fill="#A0552A"/>
-            <polygon points="60,6 64,52 60,58 56,52" fill="#1A0A02"/>
-            <polygon points="60,114 64,68 60,62 56,68" fill="#1A0A02"/>
-            <polygon points="6,60 52,56 58,60 52,64" fill="#1A0A02"/>
-            <polygon points="114,60 68,56 62,60 68,64" fill="#1A0A02"/>
-            <polygon points="18,18 52,54 58,60 50,52" fill="#C07040"/>
-            <polygon points="102,18 68,54 62,60 70,52" fill="#C07040"/>
-            <polygon points="18,102 52,66 58,60 50,68" fill="#C07040"/>
-            <polygon points="102,102 68,66 62,60 70,68" fill="#C07040"/>
-            <circle cx="60" cy="60" r="14" fill="#7A3A18"/>
-            <circle cx="60" cy="60" r="5" fill="#D4956A"/>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="44" height="44" opacity="0.35" aria-hidden="true">
+  <defs>
+    <linearGradient id="pg-bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E6F3FD"/><stop offset="1" stop-color="#9CC8EA"/>
+    </linearGradient>
+  </defs>
+  <!-- fondo circular celeste -->
+  <circle cx="60" cy="60" r="57" fill="url(#pg-bg2)" stroke="#FFFFFF" stroke-width="3"/>
+  <!-- sombra en el hielo -->
+  <ellipse cx="60" cy="103" rx="30" ry="5" fill="#0F3558" opacity="0.18"/>
+  <!-- aletas -->
+  <path d="M37 62 C24 68 20 88 27 98 C36 92 41 80 41 66 Z" fill="#12263A"/>
+  <path d="M83 62 C96 68 100 88 93 98 C84 92 79 80 79 66 Z" fill="#12263A"/>
+  <!-- cuerpo -->
+  <path d="M60 14 C41 14 33 31 33 51 C33 77 38 99 60 99 C82 99 87 77 87 51 C87 31 79 14 60 14 Z" fill="#12263A"/>
+  <!-- panza -->
+  <path d="M60 52 C48 52 43 65 43 78 C43 91 49 97 60 97 C71 97 77 91 77 78 C77 65 72 52 60 52 Z" fill="#FFFFFF"/>
+  <!-- parches blancos de la cara -->
+  <circle cx="51" cy="38" r="10" fill="#FFFFFF"/>
+  <circle cx="69" cy="38" r="10" fill="#FFFFFF"/>
+  <!-- ojos -->
+  <circle cx="52" cy="39" r="4.2" fill="#12263A"/>
+  <circle cx="68" cy="39" r="4.2" fill="#12263A"/>
+  <circle cx="53.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
+  <circle cx="69.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
+  <!-- pico -->
+  <path d="M53 46 Q60 41 67 46 Q60 57 53 46 Z" fill="#F5A623"/>
+  <!-- bufanda -->
+  <path d="M39 57 Q60 69 81 57 L81 65 Q60 77 39 65 Z" fill="#3F8FD0"/>
+  <path d="M49 63 Q60 68 71 63 L71 66 Q60 71 49 66 Z" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M72 66 L81 63 L84 80 L75 82 Z" fill="#3F8FD0"/>
+  <!-- patas -->
+  <ellipse cx="50" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
+  <ellipse cx="70" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
+</svg>
           <div class="empty-txt">Seleccioná un sitio</div>
         </div>
       </section>
