@@ -9,7 +9,7 @@ const CENTRO_MAPA = [-54.8019, -68.3030];          // centro de la ciudad
 // Claves de localStorage con prefijo propio: en GitHub Pages todas las apps de
 // meteoro405.github.io comparten el mismo origen, así que NO hay que pisar 'favs'/'dones'.
 const AUDIO_DIR   = 'audioguia/audios';            // mp3 de la audioguía (columna ARCHIVO AUDIO)
-const QR_DIR      = 'audioguia/qr';                // imágenes de QR (columna CODIGO QR)
+const QR_DIR      = 'audioguia/QR';                // imágenes de QR (columna CODIGO QR)
 const LS_FAVS   = 'ush_favs';
 const LS_DONES  = 'ush_dones';
 const LS_SHARED = 'ush_shared_';
@@ -89,7 +89,7 @@ function highlight(text, query) {
 function renderList() {
   const filtered = getFiltered();
   document.getElementById('sideCount').textContent =
-    filtered.length + (filtered.length === 1 ? ' sitio' : ' sitios');
+    filtered.length + (filtered.length === 1 ? ' estación' : ' estaciones');
 
   const list = document.getElementById('sideList');
   list.innerHTML = '';
@@ -139,7 +139,7 @@ function selectItem(d, el) {
 }
 
 function backToList() {
-  stopSpeaking();
+  pauseAudios();
   if (activeItemEl) activeItemEl.classList.remove('active');
   activeItemEl = null; currentDetail = null;
   elSidebar.style.display = '';
@@ -231,44 +231,8 @@ function showToast(msg) {
   t._timer = setTimeout(() => t.classList.remove('visible'), 2800);
 }
 
-/* ── TTS ──────────────────────────────────────────────────── */
-let isSpeaking = false;
-function speakObs(text, btnEl) {
-  if (!window.speechSynthesis) return;
-  if (isSpeaking) {
-    window.speechSynthesis.cancel(); isSpeaking = false;
-    document.querySelectorAll('.tts-btn').forEach(b => b.classList.remove('tts-playing'));
-    return;
-  }
-  function doSpeak() {
-    window.speechSynthesis.cancel();
-    const utt = new SpeechSynthesisUtterance(text);
-    utt.lang = 'es-AR'; utt.rate = 0.88;
-    const voices = window.speechSynthesis.getVoices();
-    const v = voices.find(v=>v.lang==='es-AR') || voices.find(v=>v.lang==='es-ES') || voices.find(v=>v.lang.startsWith('es'));
-    if (v) utt.voice = v;
-    utt.onstart = () => { isSpeaking = true; btnEl && btnEl.classList.add('tts-playing'); };
-    utt.onend = utt.onerror = () => { isSpeaking = false; document.querySelectorAll('.tts-btn').forEach(b=>b.classList.remove('tts-playing')); };
-    window.speechSynthesis.speak(utt);
-  }
-  const voices = window.speechSynthesis.getVoices();
-  if (voices.length > 0) doSpeak();
-  else { window.speechSynthesis.onvoiceschanged = ()=>{ window.speechSynthesis.onvoiceschanged=null; doSpeak(); }; setTimeout(doSpeak, 400); }
-}
-
-
-function stopSpeaking() {
-  if (isSpeaking && window.speechSynthesis) { window.speechSynthesis.cancel(); isSpeaking = false; }
-  document.querySelectorAll('.tts-btn').forEach(b => b.classList.remove('tts-playing'));
-}
-
-/* Audioguía (mp3) y lectura en voz alta (TTS) no suenan a la vez */
-document.addEventListener('play', e => {
-  if (e.target && e.target.tagName === 'AUDIO') stopSpeaking();
-}, true);
-document.addEventListener('click', e => {
-  if (e.target.closest && e.target.closest('.tts-btn')) document.querySelectorAll('audio').forEach(a => a.pause());
-}, true);
+/* Al cambiar de estación o volver a la lista, se pausa cualquier audioguía en reproducción */
+function pauseAudios() { document.querySelectorAll('audio').forEach(a => a.pause()); }
 
 /* ── MODAL GOOGLE MAPS ───────────────────────────────────── */
 function openMaps(nombre, src) {
@@ -503,17 +467,13 @@ function checkGalleryEmpty(id) {
 }
 
 function renderDetail(d) {
-  stopSpeaking();
+  pauseAudios();
   currentDetail = d;
   const slug  = slugify(d.nombre);
   const color = (typeof TIPO_COLORS !== 'undefined' && TIPO_COLORS[d.tipo]) || '#7A3A18';
   const k = itemKey(d), isFav = !!getFavs()[k], isDone = !!getDones()[k];
   const coords = hasCoords(d);
 
-  const ttsSvg =
-    '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">' +
-    '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>' +
-    '<path d="M19.07 4.93a10 10 0 0 1 0 14.14" class="tts-wave2"/></svg>';
   const chevron = dir => '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="' + (dir > 0 ? '9 18 15 12 9 6' : '15 18 9 12 15 6') + '"/></svg>';
   const pin = '<svg width="15" height="15" viewBox="0 0 48 48"><path d="M24 4C16.27 4 10 10.27 10 18c0 10.5 14 26 14 26s14-15.5 14-26c0-7.73-6.27-14-14-14z" fill="#EA4335"/><circle cx="24" cy="18" r="5" fill="#fff"/></svg>';
 
@@ -559,18 +519,16 @@ function renderDetail(d) {
       '</div>' +
     '</div>' +
 
-    // Descripción
-    (d.obs ? '<div class="obs-block obs-above-map">' +
-      '<div class="obs-title-row"><div class="sec-title"><span class="sec-title-icon">📝</span>Descripción</div>' +
-        '<button class="tts-btn" onclick="speakObs(this.dataset.text,this)" title="Escuchar" data-text="' + h(d.obs.replace(/\n/g, ' ')) + '">' + ttsSvg + '<span class="tts-label">Escuchar</span></button>' +
-      '</div>' +
-      '<span class="obs-tag obs-info">' + nl2br(d.obs) + '</span></div>' : '') +
-
     // Audioguía
     (d.audio ? '<div class="audio-block"><div class="sec-title"><span class="sec-title-icon">🎧</span>Audioguía</div>' +
       '<audio class="audio-player" controls preload="none" src="' + h(fileUrl(AUDIO_DIR, d.audio)) + '" ' +
       'onerror="this.nextElementSibling.style.display=\'block\'"></audio>' +
       '<div class="audio-error" style="display:none">No se pudo cargar el audio. Revisá tu conexión e intentá de nuevo.</div></div>' : '') +
+
+    // Texto (columna OBSERVACIONES)
+    (d.obs ? '<div class="obs-block obs-above-map">' +
+      '<div class="sec-title"><span class="sec-title-icon">📝</span>Descripción</div>' +
+      '<span class="obs-tag obs-info">' + nl2br(d.obs) + '</span></div>' : '') +
 
     // Horarios
     (d.horario ? '<div class="hr-block"><div class="sec-title"><span class="sec-title-icon">🕐</span>Horarios</div>' +
@@ -607,7 +565,7 @@ function renderDetail(d) {
     // Código QR
     (d.qr ? '<div class="qr-block"><div class="sec-title"><span class="sec-title-icon">📱</span>Código QR</div>' +
       '<div class="qr-wrap"><div class="qr-container"><img src="' + h(fileUrl(QR_DIR, d.qr)) + '" alt="Código QR de ' + h(d.nombre) + '" ' +
-      'onerror="this.closest(\'.qr-block\').style.display=\'none\'"/></div>' +
+      'onerror="console.warn(\'QR no encontrado:\', this.getAttribute(\'src\'));this.closest(\'.qr-block\').style.display=\'none\'"/></div>' +
       '<div class="qr-side"><p class="qr-txt">Escaneá este código para abrir la ficha de este sitio. Tocá la imagen para ampliarla.</p>' +
       '<a class="qr-download" href="' + h(fileUrl(QR_DIR, d.qr)) + '" download="' + h(d.qr) + '">⬇ Descargar QR</a></div></div></div>' : '') +
 
