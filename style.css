@@ -940,3 +940,21 @@ body {
 .clima-day-i { font-size: 24px; line-height: 1.3; }
 .clima-day-t { font-size: 13px; color: var(--ink); }
 .clima-day-p { font-size: 11px; color: #1A5276; margin-top: 2px; }
+
+
+/* ── AUDIOGUÍA (mp3) ──────────────────────────────────────── */
+.audio-block { padding: 12px 18px 16px; border-top: 1px solid var(--border); }
+.audio-player { width: 100%; margin-top: 6px; }
+.audio-error { margin-top: 6px; font-size: 13px; color: #8B2A1A; }
+
+/* ── CÓDIGO QR ────────────────────────────────────────────── */
+.qr-block { padding: 12px 18px 16px; border-top: 1px solid var(--border); }
+.qr-wrap { display: flex; align-items: center; gap: 16px; margin-top: 6px; }
+.qr-container { flex: 0 0 auto; background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 8px; }
+.qr-container img { display: block; width: 160px; height: 160px; object-fit: contain; cursor: zoom-in; }
+.qr-side { min-width: 0; }
+.qr-txt { margin: 0 0 10px; font-size: 13px; color: var(--ink-md); line-height: 1.45; }
+.qr-download { display: inline-block; font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 6px; padding: 7px 12px; background: rgba(90,58,26,0.07); }
+.qr-download:hover { background: rgba(90,58,26,0.14); }
+@media (max-width: 480px) { .qr-wrap { flex-direction: column; align-items: flex-start; } }

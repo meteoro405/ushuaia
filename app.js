@@ -8,6 +8,8 @@ const TZ          = 'America/Argentina/Ushuaia';
 const CENTRO_MAPA = [-54.8019, -68.3030];          // centro de la ciudad
 // Claves de localStorage con prefijo propio: en GitHub Pages todas las apps de
 // meteoro405.github.io comparten el mismo origen, así que NO hay que pisar 'favs'/'dones'.
+const AUDIO_DIR   = 'audioguia/audios';            // mp3 de la audioguía (columna ARCHIVO AUDIO)
+const QR_DIR      = 'audioguia/qr';                // imágenes de QR (columna CODIGO QR)
 const LS_FAVS   = 'ush_favs';
 const LS_DONES  = 'ush_dones';
 const LS_SHARED = 'ush_shared_';
@@ -70,7 +72,7 @@ function getFiltered() {
     if (activeFilter === 'FAVORITOS') return !!favs[k];
     if (activeFilter === 'VISITADOS') return !!dones[k];
     return true;
-  }).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+  }).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { numeric: true }));
 }
 
 function highlight(text, query) {
@@ -259,6 +261,14 @@ function stopSpeaking() {
   if (isSpeaking && window.speechSynthesis) { window.speechSynthesis.cancel(); isSpeaking = false; }
   document.querySelectorAll('.tts-btn').forEach(b => b.classList.remove('tts-playing'));
 }
+
+/* Audioguía (mp3) y lectura en voz alta (TTS) no suenan a la vez */
+document.addEventListener('play', e => {
+  if (e.target && e.target.tagName === 'AUDIO') stopSpeaking();
+}, true);
+document.addEventListener('click', e => {
+  if (e.target.closest && e.target.closest('.tts-btn')) document.querySelectorAll('audio').forEach(a => a.pause());
+}, true);
 
 /* ── MODAL GOOGLE MAPS ───────────────────────────────────── */
 function openMaps(nombre, src) {
@@ -493,6 +503,7 @@ function checkGalleryEmpty(id) {
 }
 
 function renderDetail(d) {
+  stopSpeaking();
   currentDetail = d;
   const slug  = slugify(d.nombre);
   const color = (typeof TIPO_COLORS !== 'undefined' && TIPO_COLORS[d.tipo]) || '#7A3A18';
@@ -555,6 +566,12 @@ function renderDetail(d) {
       '</div>' +
       '<span class="obs-tag obs-info">' + nl2br(d.obs) + '</span></div>' : '') +
 
+    // Audioguía
+    (d.audio ? '<div class="audio-block"><div class="sec-title"><span class="sec-title-icon">🎧</span>Audioguía</div>' +
+      '<audio class="audio-player" controls preload="none" src="' + h(fileUrl(AUDIO_DIR, d.audio)) + '" ' +
+      'onerror="this.nextElementSibling.style.display=\'block\'"></audio>' +
+      '<div class="audio-error" style="display:none">No se pudo cargar el audio. Revisá tu conexión e intentá de nuevo.</div></div>' : '') +
+
     // Horarios
     (d.horario ? '<div class="hr-block"><div class="sec-title"><span class="sec-title-icon">🕐</span>Horarios</div>' +
       '<div id="hrstatus_' + slug + '" class="hr-status"></div>' +
@@ -586,6 +603,13 @@ function renderDetail(d) {
     // Clima y luz
     (coords ? '<div class="clima-block"><div class="sec-title"><span class="sec-title-icon">🌤</span>Clima y luz hoy</div>' +
       '<div id="clima_' + slug + '" class="clima-inner"><div class="clima-loading">🌤 Cargando clima…</div></div></div>' : '') +
+
+    // Código QR
+    (d.qr ? '<div class="qr-block"><div class="sec-title"><span class="sec-title-icon">📱</span>Código QR</div>' +
+      '<div class="qr-wrap"><div class="qr-container"><img src="' + h(fileUrl(QR_DIR, d.qr)) + '" alt="Código QR de ' + h(d.nombre) + '" ' +
+      'onerror="this.closest(\'.qr-block\').style.display=\'none\'"/></div>' +
+      '<div class="qr-side"><p class="qr-txt">Escaneá este código para abrir la ficha de este sitio. Tocá la imagen para ampliarla.</p>' +
+      '<a class="qr-download" href="' + h(fileUrl(QR_DIR, d.qr)) + '" download="' + h(d.qr) + '">⬇ Descargar QR</a></div></div></div>' : '') +
 
     '<div class="nav-footer">' +
       '<button class="nav-foot-btn prev-foot-btn" onclick="goPrevItem()">' + chevron(-1).replace('width="14" height="14"', 'width="16" height="16"') + '<span>Anterior</span></button>' +
@@ -881,7 +905,7 @@ window.addEventListener('popstate', () => {
 
   /* ── Delegación: click en img dentro de .map-container ── */
   document.getElementById('detail').addEventListener('click', e => {
-    const mapImg = e.target.closest('.map-container img, .photo-container img');
+    const mapImg = e.target.closest('.map-container img, .photo-container img, .qr-container img');
     if (mapImg && mapImg.complete && mapImg.naturalWidth > 0) {
       open(mapImg.src);
     }

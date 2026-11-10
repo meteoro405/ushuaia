@@ -1,7 +1,7 @@
 /* sw.js — Sitios de interés en Ushuaia
    IMPORTANTE: al publicar cambios en el código, subí el número de versión de CACHE
    (v1 -> v2 -> ...) para que los celulares descarguen la versión nueva. */
-const CACHE = 'sitios-ushuaia-v1';
+const CACHE = 'sitios-ushuaia-v2';
 
 /* App shell para que abra sin internet (solo archivos que EXISTEN en el repo) */
 const PRECACHE = [
@@ -30,10 +30,54 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
+/* Audioguías (mp3). Los navegadores piden el audio por tramos (cabecera Range) y Safari exige
+   respuestas 206, así que no se puede servir un archivo cacheado "a secas":
+   - si el mp3 ya está en caché -> se responde el tramo pedido desde el caché (sirve offline);
+   - si no está -> se deja pasar a la red y, en segundo plano, se guarda el archivo completo
+     para la próxima vez. */
+async function audioResponse(e) {
+  const req = e.request;
+  const cache = await caches.open(CACHE);
+  const cached = await cache.match(req.url);              // se busca por URL, ignorando Range
+  const range = req.headers.get('range');
+
+  if (cached) {
+    if (!range) return cached;
+    const buf = await cached.arrayBuffer();
+    const total = buf.byteLength;
+    const m = /bytes=(\d*)-(\d*)/.exec(range);
+    if (!m) return cached;
+    let start, end;
+    if (m[1] === '') { start = Math.max(0, total - parseInt(m[2], 10)); end = total - 1; }   // bytes=-N (últimos N)
+    else { start = parseInt(m[1], 10); end = m[2] === '' ? total - 1 : Math.min(parseInt(m[2], 10), total - 1); }
+    if (start >= total || start > end) {
+      return new Response(null, { status: 416, headers: { 'Content-Range': 'bytes */' + total } });
+    }
+    return new Response(buf.slice(start, end + 1), {
+      status: 206, statusText: 'Partial Content',
+      headers: {
+        'Content-Type': cached.headers.get('Content-Type') || 'audio/mpeg',
+        'Content-Length': String(end - start + 1),
+        'Content-Range': 'bytes ' + start + '-' + end + '/' + total,
+        'Accept-Ranges': 'bytes'
+      }
+    });
+  }
+
+  const net = await fetch(req);
+  if (net.ok) e.waitUntil(cache.add(req.url).catch(() => {}));
+  return net;
+}
+
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
+
+  if (url.origin === self.location.origin && /\/audioguia\/audios\//.test(url.pathname)) {
+    e.respondWith(audioResponse(e));
+    return;
+  }
 
   /* Mismo origen */
   if (url.origin === self.location.origin) {
