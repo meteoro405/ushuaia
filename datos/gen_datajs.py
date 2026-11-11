@@ -6,7 +6,7 @@ Uso (desde la raíz del repo o desde datos/):
     python datos/gen_datajs.py
     python gen_datajs.py            # si estás dentro de datos/
 
-Lee   : datos/Ushuaia.csv   (separador ;  — acepta UTF-8 o Windows-1252/Excel)
+Lee   : Ushuaia.csv (en datos/ o en la raíz del repo; separador ;  — acepta UTF-8 o Windows-1252/Excel)
 Escribe: data.js            (en la raíz del repo)
 
 Columnas reconocidas (por NOMBRE de encabezado; el orden no importa):
@@ -20,14 +20,20 @@ Columnas reconocidas (por NOMBRE de encabezado; el orden no importa):
   LUGAR_INTERES_FOTO_1..3 -> fotos (en fotos/) de cosas para ver en el lugar
   TEXTO_INTERES_FOTO_1..3 -> pie de cada una de esas fotos
   HORARIO PF              -> horarios (ver formato en el README). Alias aceptados: HORARIO, HORARIOS
-La columna "A" (si existe) se ignora.
+  ARCHIVO AUDIO           -> mp3 de la audioguía, dentro de audioguia/audios/
+  CODIGO QR               -> imagen del QR del sitio, dentro de audioguia/QR/
+COLUMNA A (visibilidad): si la celda contiene el carácter "ü" (la tilde de Wingdings), la estación SE MUESTRA;
+si está en blanco, NO se muestra: queda fuera de la lista, del buscador, del mapa y de los links de la app, pero
+la fila y todos sus archivos (html, mp3, fotos, QR…) siguen existiendo. Para mostrarla de nuevo, volvé a poner "ü".
+(Si el CSV no tiene columna A, se muestran todas las estaciones.)
 """
 import csv, io, json, re, sys, html
 from pathlib import Path
 
 AQUI = Path(__file__).resolve().parent
 RAIZ = AQUI.parent if AQUI.name == 'datos' else AQUI
-CSV_PATH = AQUI / 'Ushuaia.csv' if (AQUI / 'Ushuaia.csv').exists() else RAIZ / 'datos' / 'Ushuaia.csv'
+CSV_PATH = next((c for c in (AQUI / 'Ushuaia.csv', RAIZ / 'Ushuaia.csv', RAIZ / 'datos' / 'Ushuaia.csv') if c.exists()),
+                AQUI / 'Ushuaia.csv')   # busca el CSV junto al script, en la raíz del repo o en datos/
 OUT_PATH = RAIZ / 'data.js'
 
 def leer_csv(path):
@@ -81,10 +87,14 @@ def main():
                 if i < len(row): return row[i]
         return ''
 
-    data, avisos = [], []
+    data, avisos, ocultas = [], [], []
+    tiene_visibilidad = 'A' in hdr
     for nro, r in enumerate(rows[1:], start=2):
         nombre = limpiar(col(r, 'NOMBRE'))
         if not nombre:
+            continue
+        if tiene_visibilidad and not any(ch in col(r, 'A') for ch in ('ü', 'Ü')):
+            ocultas.append(nombre)          # columna A en blanco -> no se publica en data.js
             continue
         iframe = col(r, 'CODIGO HTML GOOGLE MAPS')
         lat, lng = coords(iframe)
@@ -105,11 +115,14 @@ def main():
             'liT2':    limpiar(col(r, 'TEXTO_INTERES_FOTO_2')),
             'liT3':    limpiar(col(r, 'TEXTO_INTERES_FOTO_3')),
             'horario': arreglar_horario(col(r, 'HORARIO PF', 'HORARIO', 'HORARIOS')),
+            'audio':   limpiar(col(r, 'ARCHIVO AUDIO')),
+            'qr':      limpiar(col(r, 'CODIGO QR')),
         }
         d = {k: v for k, v in d.items() if v not in ('', None)}
         if 'lat' not in d: avisos.append(f'fila {nro} «{nombre}»: no pude sacar lat/lng del código de Google Maps (no saldrá en el mapa ni tendrá clima)')
         if 'obs' not in d: avisos.append(f'fila {nro} «{nombre}»: sin OBSERVACIONES')
-        for campo, carpeta in (('foto1','fotos'),('foto2','fotos'),('liF1','fotos'),('liF2','fotos'),('liF3','fotos'),('mapImg','mapas')):
+        for campo, carpeta in (('foto1','fotos'),('foto2','fotos'),('liF1','fotos'),('liF2','fotos'),('liF3','fotos'),('mapImg','mapas'),
+                               ('audio','audioguia/audios'),('qr','audioguia/QR')):
             f = d.get(campo)
             if f and not (RAIZ / carpeta / f).exists():
                 avisos.append(f'fila {nro} «{nombre}»: falta {carpeta}/{f}')
@@ -119,9 +132,11 @@ def main():
           'const DATA = ' + json.dumps(data, ensure_ascii=False, indent=1) + ';\n\n'
           '/* Color de acento por categoría (la categoría viene de la columna "LUGAR DE INTERES").\n'
           '   Si agregás una categoría nueva en el CSV, sumale un color acá (si no, usa el marrón por defecto). */\n'
-          'const TIPO_COLORS = {\n  "LUGAR DE INTERES": "#7A3A18"\n};\n')
+          'const TIPO_COLORS = {\n  "LUGAR DE INTERES": "#1F5A8F"\n};\n')
     OUT_PATH.write_text(js, encoding='utf-8')
-    print(f'OK: {len(data)} sitio(s) -> {OUT_PATH.name}   (CSV leído como {enc})')
+    print(f'OK: {len(data)} estación(es) visibles -> {OUT_PATH.name}   (CSV leído como {enc})')
+    if ocultas:
+        print(f'  Ocultas (columna A en blanco): {len(ocultas)} -> ' + '; '.join(ocultas))
     for a in avisos: print('  ⚠', a)
 
 if __name__ == '__main__':

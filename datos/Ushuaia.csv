@@ -1,27 +1,158 @@
-A;LUGAR DE INTERES;NOMBRE;OBSERVACIONES;CODIGO HTML GOOGLE MAPS;FOTO 1;FOTO 2;CONTENEDOR DEL MAPA;MEJOR EPOCA;LUGAR_INTERES_FOTO_2;LUGAR_INTERES_FOTO_3;TEXTO_INTERES_FOTO_1;TEXTO_INTERES_FOTO_2;TEXTO_INTERES_FOTO_3;HORARIO PF
-ü;LUGAR DE INTERES;MUSEO DEL FIN DEL MUNDO;"El Museo del Fin del Mundo cuenta con dos sedes: Sede Fundacional, en Maipú 173, y en la Antigua Casa de Gobierno, en Maipú 465. 
-Ofrece exhibiciones permanentes y temporarias, y preserva un amplio archivo histórico, e importantes colecciones disponibles para su consulta.
-Su vasto patrimonio fue conformado a partir de la adquisición propia, donaciones de particulares, colaboraciones institucionales y mediante distintos programas de investigación.";"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2299.5203029982176!2d-68.30017149999999!3d-54.8059734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c22e08116d373%3A0xf05c8e395c353558!2sMuseo%20del%20Fin%20del%20Mundo!5e0!3m2!1ses!2sar!4v1793975984842!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Museo_fin_mundo.jpg;;Museo_fin_mundo_ubic.jpg;Todo el año.;;;;;;"Lunes a viernes de 10:00 a 19:00?horas.
+A;LUGAR DE INTERES;NOMBRE;OBSERVACIONES;CODIGO HTML GOOGLE MAPS;FOTO 1;FOTO 2;CONTENEDOR DEL MAPA;MEJOR EPOCA;LUGAR_INTERES_FOTO_2;LUGAR_INTERES_FOTO_3;TEXTO_INTERES_FOTO_1;TEXTO_INTERES_FOTO_2;TEXTO_INTERES_FOTO_3;HORARIO PF;ARCHIVO AUDIO;CODIGO QR
+ü;LUGAR DE INTERES;01 · Plaza Cívica 12 de Octubre;"Donde comenzó la historia institucional de Ushuaia
+Bienvenidos a Ushuaia.
+Estás en la Plaza Cívica 12 de Octubre, un espacio que guarda una parte fundamental de la historia de esta ciudad.
+Para comprender su origen, tenemos que viajar mucho más atrás de las primeras construcciones y de las calles que hoy conocemos.
+Mucho antes de que Ushuaia fuera una ciudad argentina, estas tierras estaban habitadas por pueblos originarios.
+En las costas y los bosques de Tierra del Fuego vivían comunidades indígenas, entre ellas los yaganes, también conocidos como yámanas, que desarrollaron una extraordinaria relación con el mar, los canales y los recursos naturales.
+Sus canoas recorrían las aguas del Beagle mucho antes de que aparecieran los barcos europeos.
+A partir del siglo XIX, exploradores, misioneros y expediciones comenzaron a llegar con mayor frecuencia a esta región.
+Uno de los episodios importantes ocurrió en 1869, cuando el misionero anglicano Waite Hockin Stirling estableció una misión en la zona de Ushuaia.
+Pero el acontecimiento que marcó el inicio de la organización institucional argentina en este lugar llegaría algunos años después.
+El 12 de octubre de 1884 arribó a la bahía de Ushuaia la expedición comandada por el comodoro Augusto Lasserre.
+La expedición estableció una subprefectura marítima y realizó el izamiento de la bandera argentina.
+Esta fecha quedó profundamente vinculada con el nacimiento institucional de Ushuaia.
+No se trataba todavía de la ciudad que vemos hoy. Era un pequeño asentamiento, rodeado de montañas, bosques y un clima que exigía enormes esfuerzos a quienes decidían permanecer aquí.
+La presencia de la autoridad marítima tenía un significado estratégico: afirmar la presencia argentina en el extremo austral y ejercer control sobre la navegación.
+Con el paso de los años, el asentamiento fue creciendo lentamente.
+Llegaron funcionarios, trabajadores, comerciantes, familias y nuevos pobladores. Se construyeron viviendas, se organizaron servicios y comenzaron a tomar forma las instituciones que darían origen a la comunidad actual.
+Esta plaza nos permite recordar que una ciudad no nace solamente cuando se construyen sus edificios.
+También nace cuando las personas empiezan a compartir un territorio, establecer vínculos y construir una identidad.
+Y Ushuaia fue construyendo la suya mirando al canal Beagle, rodeada de montañas y conectada con una de las regiones más singulares del planeta.
+Un dato curioso:
+El nombre Ushuaia proviene de la lengua yagán. Habitualmente se interpreta como una referencia a una bahía o ensenada que se interna hacia el poniente.
+Así, el propio nombre de la ciudad conserva la memoria de quienes conocían y habitaban estas costas mucho antes de su fundación institucional.
+La próxima vez que mires el canal Beagle desde esta plaza, recordá que estas aguas fueron caminos, territorio de vida y escenario de acontecimientos que transformaron la historia de Tierra del Fuego.
+Gracias por descubrir Ushuaia escuchando su historia.";"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2919.201197540545!2d-68.3054321928417!3d-54.80751934517031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c22e003301223%3A0x5bc1b3dcbff7856a!2sPlaza%20C%C3%ADvica%20Ushuaia!5e1!3m2!1ses!2sar!4v1794009487911!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Plaza_Civica.jpg;;;Todo el año.;;;;;;;plaza-civica.mp3;QR-01-Plaza-Civica.png
+ü;LUGAR DE INTERES;02 · Museo del Fin del Mundo;"Hay edificios que cuentan su historia incluso antes de que entremos en ellos.
+Este es uno de esos lugares.
+Estás frente a la sede fundacional del Museo del Fin del Mundo, ubicada en la avenida Maipú 173.
+Pero antes de convertirse en museo, esta construcción tuvo otra vida.
+El edificio comenzó a construirse en 1903 como una vivienda particular. Sus muros fueron levantados utilizando piedra de la zona y mano de obra de personas privadas de su libertad en el presidio de Ushuaia.
+En agosto de 1911 fue adquirido por el Banco de la Nación Argentina, que funcionó aquí durante más de seis décadas.
+Imaginemos por un momento cómo era Ushuaia en aquellos años.
+Las calles eran muy diferentes, las construcciones eran escasas y la vida cotidiana estaba condicionada por el clima, las distancias y las dificultades de comunicación.
+En ese contexto, un edificio como este representaba una construcción importante para la pequeña comunidad.
+Pero su historia no terminó con el banco.
+En 1977 el inmueble fue cedido a la Gobernación del Territorio y, después de una serie de gestiones, se convirtió en sede del Museo Territorial, inaugurado el 18 de mayo de 1979.
+Con el paso del tiempo, aquella institución adoptó el nombre que hoy conocemos: Museo del Fin del Mundo.
+Su misión es preservar y compartir la memoria histórica, cultural y natural de Tierra del Fuego.
+En sus colecciones podemos acercarnos a la vida de los pueblos originarios, conocer las especies que habitan la región, descubrir los viajes de exploradores y navegantes y comprender cómo se fue formando la sociedad fueguina.
+La historia de esta tierra no puede contarse sin reconocer a sus primeros habitantes.
+Los pueblos selk'nam, haush, kawésqar y yagán desarrollaron formas de vida profundamente relacionadas con los distintos ambientes de la isla y los canales australes.
+Sus conocimientos sobre el territorio, los animales, las plantas y las condiciones climáticas fueron fundamentales para vivir en una región de características extraordinarias.
+También podemos descubrir la historia de los navegantes que recorrieron estas aguas, las expediciones que llegaron desde distintos lugares del mundo y los desafíos que enfrentaron quienes intentaron establecerse en estas latitudes.
+El museo conserva testimonios de una historia que no pertenece solamente al pasado: forma parte de la identidad de quienes viven hoy en Tierra del Fuego.
+Una anécdota de su historia:
+La idea de crear un museo en Ushuaia es mucho más antigua que el edificio que hoy lo alberga.
+Ya en 1906 existía una propuesta para fundar un museo que permitiera promocionar y preservar la incipiente industria regional.
+Sin embargo, la iniciativa no prosperó por falta de recursos.
+Tuvieron que pasar varias décadas, distintas gestiones y el compromiso de personas interesadas en conservar el patrimonio para que el proyecto finalmente se concretara.
+Un dato curioso:
+Los muros del edificio tienen aproximadamente 60 centímetros de espesor.
+Fueron construidos con piedra pizarra de la zona, utilizando una técnica que permitió obtener una estructura sólida y adecuada para las exigencias del clima fueguino.
+Hoy, este edificio ya no guarda operaciones bancarias ni documentos financieros.
+Guarda algo mucho más valioso: recuerdos, objetos, conocimientos y testimonios que nos ayudan a entender quiénes somos y de dónde venimos.
+Porque conocer Ushuaia también significa conocer la historia de toda Tierra del Fuego.
+Gracias por visitar el Museo del Fin del Mundo y descubrir nuestra memoria.
+Dato curioso 
+¿Sabías que...?
+Antes de ser museo, este edificio funcionó como Banco de la Nación Argentina durante más de 60 años. Sus muros de piedra fueron levantados con mano de obra de personas condenadas en el presidio.
+";"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2299.5203029982176!2d-68.30017149999999!3d-54.8059734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c22e08116d373%3A0xf05c8e395c353558!2sMuseo%20del%20Fin%20del%20Mundo!5e0!3m2!1ses!2sar!4v1793975984842!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Museo_fin_mundo.jpg;;;Todo el año.;;;;;;"Lunes a viernes de 10:00 a 19:00?horas.
 Sábados de 13:00 a 19: horas.
-Domingos y feriados CERRADO."
-ü;LUGAR DE INTERES;PRESIDIO DE USHUAIA;"El penal de Ushuaia fue una cárcel que funcionó entre 1902 y 1947.
-La dureza de las condiciones climáticas y el aislamiento geográfico de la ciudad más austral del mundo reforzaban la seguridad del presidio.
-Estaba destinado a delincuentes comunes, reincidentes y de la más alta peligrosidad, y empleado también a veces para detenidos políticos.";"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2299.657611626418!2d-68.30045352242232!3d-54.80356048079381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c22dddac60d23%3A0xbe1e5482fc53bfb6!2sMuseo%20Mar%C3%ADtimo%20y%20del%20Presidio%20de%20Ushuaia!5e0!3m2!1ses!2sar!4v1793983272220!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Museo_maritimo.jpg;;;Todo el año.;;;;;;Todos los días de 10:00 a 20:00 horas.
-ü;LUGAR DE INTERES;PLAZA ISLAS MALVINAS;"La plaza Islas Malvinas se encuentra en la costanera de Ushuaia, y contiene el Mural escultórico Héroes de Malvinas, monumento nacional.
-La plaza y el mural homenajean a los caídos en la guerra de 1982.";"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4598.544257033145!2d-68.30856452254231!3d-54.81033437874355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c2320ed8451b7%3A0x56ae75d260110526!2sPlaza%20Islas%20Malvinas!5e0!3m2!1ses!2sar!4v1793983938542!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Plaza_islas_Malvinas.jpg;;;Todo el año.;;;;;;
-ü;LUGAR DE INTERES;GLACIAR MARTIAL;El glaciar Martial es un emblema de Ushuaia. Se encuentra dentro del Área Natural Protegida que lleva el mismo nombre, a sólo 7 kilómetros del centro y ofrece todo tipo de actividades para disfrutar de la naturaleza: en invierno el esquí alpino y snowboard son las preferidas y en verano se posiciona como uno de los lugares más accesibles para disfrutar del senderismo. Además, allí encontrás establecimientos gastronómicos abiertos todo el año. El Martial es un glaciar de circo debido a su forma semejante a un anfiteatro o semicírculo. Está situado a unos 1000 msnm y su nombre proviene del comandante de la expedición científica francesa de 1882-1883, Louis Ferdinand Martial. Actualmente es un remanente glaciario, es decir, restos de un antiguo glaciar mucho más grande. Desde allí nace el arroyo Buena Esperanza que constituye una importante fuente de agua potable para la ciudad.;"<iframe src=""https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d18398.823493339005!2d-68.36740152800262!3d-54.80012791791051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sglaciar%20martial%20ushuaia!5e0!3m2!1ses!2sar!4v1793995938469!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Martial.jpg;;;Todo el año.;;;;;;
-ü;LUGAR DE INTERES;TREN DEL FIN DEL MUNDO;El Tren del Fin del Mundo es una experiencia turística única que recrea los últimos kilómetros del histórico tren de los presos de Ushuaia, atravesando los paisajes imponentes del Parque Nacional Tierra del Fuego.;"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2297.977306082609!2d-68.4242141!3d-54.8330835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c180d23386b41%3A0xa4d2a50c49f182f6!2sTren%20del%20Fin%20del%20Mundo!5e0!3m2!1ses!2sar!4v1793996569396!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Tren_fin_mundo.jpg;;;Todo el año.;;;;;;La estación permanece abierta de 8:30 a 17:15 hs.
-ü;LUGAR DE INTERES;CASA BEBAN;"Este edificio es uno de los mayores exponentes del patrimonio arquitectónico local. Declarado Patrimonio Cultural de la Ciudad de Ushuaia por Resolución del Concejo Deliberante (09/10/96). En este lugar se realizaron innumerables hechos sociales de significación para la población de Ushuaia. Perteneció a Tomás Bebán (hijo de un inmigrante de origen croata), quien cuando decidió casarse encargó a Suecia los paneles de su futura casa. La vivienda la trajeron desarmada y la instalaron entre 1911 y 1913. Se utilizó como residencia familiar hasta el fallecimiento de Tomás en 1963 (éste se había casado con Paula Amanda Arias y tuvieron ocho hijos). Luego funcionó una clínica y el hotel Las Goletas. Más adelante, los descendientes de la familia la vendieron. Debido al deterioro que mostraba, la Municipalidad de Ushuaia decidió recuperar el edificio y trasladarlo, desde el lugar donde fue construido (en Av. Maipú 857) hacia su ubicación actual en el Paseo de los Antiguos Pobladores. Posteriormente se trasladaron otros dos edificios antiguos en el mismo sector -las casas Pena y Torres-, de acuerdo a un proyecto “Pueblo Viejo” de la Municipalidad de Ushuaia, de rescate del patrimonio histórico-arquitectónico de la ciudad.
-El 4 de noviembre de 1994 la casa Beban se inauguró como Centro Cultural y de Exposiciones.";"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2299.132652939149!2d-68.32353782274629!3d-54.81278517275068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c2317753eb29d%3A0x256a3560f1903fd4!2sAntigua%20Casa%20Beban!5e0!3m2!1ses!2sar!4v1793998051308!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Casa_Beban.jpg;;;Todo el año.;;;;;;Lunes a viernes de 10:00 a 18:00 horas.
-;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;
+Domingos y feriados CERRADO.";museo-fin-del-mundo.mp3;QR-02-museo-fin-del-mundo.png
+ü;LUGAR DE INTERES;03 · Casa Beban;"No existían las facilidades de transporte y comunicación que tenemos hoy. Cada material debía recorrer una enorme distancia, atravesar el océano y llegar a un pequeño poblado rodeado de montañas y bosques.
+La casa se convirtió en la residencia de Tomás Beban, su esposa Paula Amanda Arias y sus ocho hijos.
+Durante muchos años fue un espacio de vida familiar, de reuniones y de encuentros.
+Y esa es una de las cosas más interesantes de este edificio: no representa solamente una obra arquitectónica, sino también la vida cotidiana de una familia que formó parte del crecimiento de Ushuaia.
+Con el paso del tiempo, la casa tuvo otros usos.
+Funcionó como clínica y también como hotel, conocido como Las Goletas.
+La ciudad fue cambiando y la construcción comenzó a sufrir el deterioro propio del paso de los años.
+Pero su historia no terminó allí.
+La Municipalidad de Ushuaia decidió recuperar el edificio y conservarlo como parte del patrimonio histórico y arquitectónico de la ciudad.
+Para lograrlo, fue necesario trasladarlo desde su ubicación original, en avenida Maipú 857, hasta el lugar donde hoy podemos observarlo.
+La recuperación permitió que la Casa Beban volviera a ocupar un lugar importante en la vida cultural de Ushuaia.
+El 4 de noviembre de 1994 fue inaugurada como Centro Cultural y de Exposiciones.
+Y en 1996 recibió la declaración de Patrimonio Cultural de la Ciudad de Ushuaia.
+Una anécdota de esta casa:
+Lo que hoy vemos aquí no es el lugar original donde se construyó.
+La casa fue trasladada para salvarla del deterioro y permitir que siguiera formando parte de la ciudad.
+Es decir, esta vivienda tuvo dos ubicaciones en Ushuaia y una historia de reconstrucción que permitió conservarla para las generaciones futuras.
+Un dato curioso:
+La casa no fue construida con materiales que se consiguieron íntegramente en Tierra del Fuego.
+Sus paneles fueron encargados en Suecia y viajaron desarmados en barco hasta Ushuaia.
+Podemos decir que esta casa realizó un viaje transatlántico antes de convertirse en uno de los edificios más fotografiados de la ciudad.
+La Casa Beban nos recuerda que el patrimonio no está formado únicamente por monumentos o grandes edificios públicos.
+También está compuesto por las viviendas, las historias familiares, los lugares de encuentro y los espacios donde transcurrió la vida de nuestros antiguos pobladores.
+Cuando una comunidad decide conservar una casa como esta, no está preservando solamente madera y arquitectura.
+Está preservando una parte de su memoria.
+Gracias por conocer la historia de Casa Beban.
+Dato curioso 
+¿Sabías que...?
+Casa Beban fue encargada en Suecia, llegó desarmada por barco y fue montada en Ushuaia entre 1911 y 1913. Además, fue trasladada dentro de la ciudad para salvarla del deterioro.
+";"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2299.132652939149!2d-68.32353782274629!3d-54.81278517275068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c2317753eb29d%3A0x256a3560f1903fd4!2sAntigua%20Casa%20Beban!5e0!3m2!1ses!2sar!4v1793998051308!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Casa_Beban.jpg;;;Todo el año.;;;;;;Lunes a viernes de 10:00 a 18:00 horas.;casa-beban.mp3;QR-03-casa-beban.png
+ü;LUGAR DE INTERES;04 · Ex Presidio;"Hay lugares que conservan historias difíciles de olvidar.
+Este es uno de ellos.
+Estamos frente al antiguo Presidio de Ushuaia, uno de los edificios más conocidos de la ciudad y un símbolo de una etapa muy particular de su historia.
+Para comprender por qué se construyó aquí, tenemos que regresar a fines del siglo XIX.
+En aquella época, el Estado argentino buscaba consolidar su presencia en los territorios australes y organizar un sistema penitenciario que permitiera trasladar determinados establecimientos carcelarios a regiones alejadas de los grandes centros urbanos.
+La idea de establecer una colonia penal en Tierra del Fuego surgió en 1882.
+La construcción del Presidio Nacional comenzó oficialmente en septiembre de 1902.
+El edificio fue creciendo con el trabajo de los propios internos, quienes participaron en diferentes tareas de construcción, carpintería, herrería y otros talleres.
+El presidio no era solamente un lugar de encierro.
+También funcionaba como un establecimiento productivo que contribuía al abastecimiento y al desarrollo de la pequeña comunidad de Ushuaia.
+Los internos realizaban trabajos que incluían la preparación de materiales, la tala de árboles, el transporte de madera y piedra y distintas actividades necesarias para la construcción.
+La relación entre el presidio y la ciudad fue muy estrecha.
+El trabajo de los presos estuvo vinculado a la apertura y mantenimiento de caminos, la obtención de leña, el transporte de materiales y otras tareas que acompañaron el crecimiento del asentamiento.
+Pero es importante recordar que detrás de ese desarrollo existieron personas privadas de su libertad, sometidas a condiciones de vida muy duras.
+El aislamiento geográfico, el clima, la disciplina penitenciaria y las condiciones de trabajo marcaron profundamente la vida cotidiana de los internos.
+El edificio tiene una arquitectura muy particular.
+Está organizado en cinco pabellones dispuestos radialmente, que convergen en un espacio central.
+Este diseño permitía organizar la circulación y la vigilancia desde un punto común.
+En total, el proyecto contemplaba 380 celdas individuales.
+Sin embargo, la población penitenciaria llegó a superar ampliamente la capacidad prevista, alcanzando más de 600 internos en determinados momentos.
+Imaginemos la dimensión de ese dato.
+Un establecimiento diseñado para alojar a una cantidad limitada de personas tuvo que enfrentar situaciones de sobrepoblación que agravaron las condiciones de convivencia.
+Entre los internos hubo personas condenadas por delitos de distinta gravedad y personajes que alcanzaron notoriedad pública.
+Sus historias son muy diferentes entre sí y forman parte de un capítulo complejo de la historia penitenciaria argentina.
+El presidio también contó con talleres, enfermería, biblioteca, cocina y otros espacios destinados al funcionamiento de la institución.
+Uno de los elementos más interesantes de esta historia fue el ferrocarril que conectaba el establecimiento con las zonas de explotación forestal.
+Conocido como el Tren de los Presos, permitía transportar madera, piedra y otros materiales necesarios para las actividades del penal y el crecimiento de Ushuaia.
+Este pequeño ferrocarril fue una pieza importante de la infraestructura penitenciaria.
+Con el paso de los años, el establecimiento fue perdiendo su función original.
+Finalmente, el presidio cerró sus puertas en 1947.
+El edificio quedó como testimonio de una época que había marcado profundamente a la ciudad.
+Décadas después, comenzó una nueva etapa.
+El antiguo establecimiento fue recuperado para convertirse en un espacio de conservación y difusión histórica.
+Hoy funciona aquí el Museo Marítimo y del Presidio de Ushuaia, donde los visitantes pueden recorrer los pabellones y conocer no solamente la historia carcelaria, sino también la navegación, las expediciones antárticas, los naufragios y la historia regional.
+Una anécdota histórica:
+El presidio tuvo su propio ferrocarril.
+Los internos participaban en las tareas vinculadas al transporte de madera y otros materiales desde los bosques cercanos.
+Ese recorrido ferroviario forma parte de la historia del conocido Tren del Fin del Mundo, cuya actividad turística actual se desarrolla en un trazado diferente y no debe confundirse con el antiguo recorrido penitenciario.
+Un dato curioso:
+El edificio fue proyectado con cinco pabellones dispuestos en forma radial, que convergen en una rotonda central.
+Esta distribución arquitectónica permitía controlar los pasillos y organizar la vigilancia desde un espacio común.
+Hoy, al recorrer estos pasillos, no estamos solamente visitando un edificio antiguo.
+Estamos entrando en contacto con una parte compleja de la historia argentina y fueguina.
+El presidio nos habla del aislamiento, de la vida de los internos, del trabajo penitenciario y de la transformación de una pequeña población en una ciudad.
+También nos recuerda la importancia de preservar los lugares históricos, incluso aquellos que conservan recuerdos difíciles.
+Porque conocer la historia significa comprender todos sus capítulos.
+Gracias por descubrir Ushuaia y su historia.
+Dato curioso 
+¿Sabías que...?
+El edificio fue diseñado con cinco pabellones que convergen en una rotonda central y contaba originalmente con 380 celdas individuales. En determinados momentos llegó a alojar a más de 600 internos.";"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2299.657611626418!2d-68.30045352242232!3d-54.80356048079381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c22dddac60d23%3A0xbe1e5482fc53bfb6!2sMuseo%20Mar%C3%ADtimo%20y%20del%20Presidio%20de%20Ushuaia!5e0!3m2!1ses!2sar!4v1793983272220!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Museo_maritimo.jpg;;;Todo el año.;;;;;;Todos los días de 10:00 a 20:00 horas.;ex-presidio.mp3;QR-04-ex-presidio.png
+;LUGAR DE INTERES;05 · Glaciar Marcial;El glaciar Martial es un emblema de Ushuaia. Se encuentra dentro del Área Natural Protegida que lleva el mismo nombre, a sólo 7 kilómetros del centro y ofrece todo tipo de actividades para disfrutar de la naturaleza: en invierno el esquí alpino y snowboard son las preferidas y en verano se posiciona como uno de los lugares más accesibles para disfrutar del senderismo. Además, allí encontrás establecimientos gastronómicos abiertos todo el año. El Martial es un glaciar de circo debido a su forma semejante a un anfiteatro o semicírculo. Está situado a unos 1000 msnm y su nombre proviene del comandante de la expedición científica francesa de 1882-1883, Louis Ferdinand Martial. Actualmente es un remanente glaciario, es decir, restos de un antiguo glaciar mucho más grande. Desde allí nace el arroyo Buena Esperanza que constituye una importante fuente de agua potable para la ciudad.;"<iframe src=""https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d18398.823493339005!2d-68.36740152800262!3d-54.80012791791051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sglaciar%20martial%20ushuaia!5e0!3m2!1ses!2sar!4v1793995938469!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Martial.jpg;;;Todo el año.;;;;;;;;
+;LUGAR DE INTERES;06 · Plaza Islas Malvinas;"La plaza Islas Malvinas se encuentra en la costanera de Ushuaia, y contiene el Mural escultórico Héroes de Malvinas, monumento nacional.
+La plaza y el mural homenajean a los caídos en la guerra de 1982.";"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4598.544257033145!2d-68.30856452254231!3d-54.81033437874355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c2320ed8451b7%3A0x56ae75d260110526!2sPlaza%20Islas%20Malvinas!5e0!3m2!1ses!2sar!4v1793983938542!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Plaza_islas_Malvinas.jpg;;;Todo el año.;;;;;;;;
+;LUGAR DE INTERES;07 · Tren del Fin del Mundo;El Tren del Fin del Mundo es una experiencia turística única que recrea los últimos kilómetros del histórico tren de los presos de Ushuaia, atravesando los paisajes imponentes del Parque Nacional Tierra del Fuego.;"<iframe src=""https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2297.977306082609!2d-68.4242141!3d-54.8330835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c180d23386b41%3A0xa4d2a50c49f182f6!2sTren%20del%20Fin%20del%20Mundo!5e0!3m2!1ses!2sar!4v1793996569396!5m2!1ses!2sar"" width=""600"" height=""450"" style=""border:0;"" allowfullscreen="""" loading=""lazy"" referrerpolicy=""strict-origin-when-cross-origin""></iframe>";Tren_fin_mundo.jpg;;;Todo el año.;;;;;;La estación permanece abierta de 8:30 a 17:15 hs.;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;
