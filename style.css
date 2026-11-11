@@ -933,6 +933,7 @@ body {
 .audio-block { padding: 12px 18px 16px; border-top: 1px solid var(--border); }
 .audio-player { width: 100%; margin-top: 6px; }
 .audio-error { margin-top: 6px; font-size: 13px; color: #8B2A1A; }
+.audio-error a { color: var(--leather); font-weight: 600; }
 
 /* ── CÓDIGO QR ────────────────────────────────────────────── */
 .qr-block { padding: 12px 18px 16px; border-top: 1px solid var(--border); }

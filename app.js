@@ -521,14 +521,8 @@ function renderDetail(d) {
 
     // Audioguía
     (d.audio ? '<div class="audio-block"><div class="sec-title"><span class="sec-title-icon">🎧</span>Audioguía</div>' +
-      '<audio class="audio-player" controls preload="none" src="' + h(fileUrl(AUDIO_DIR, d.audio)) + '" ' +
-      'onerror="this.nextElementSibling.style.display=\'block\'"></audio>' +
-      '<div class="audio-error" style="display:none">No se pudo cargar el audio. Revisá tu conexión e intentá de nuevo.</div></div>' : '') +
-
-    // Texto (columna OBSERVACIONES)
-    (d.obs ? '<div class="obs-block obs-above-map">' +
-      '<div class="sec-title"><span class="sec-title-icon">📝</span>Descripción</div>' +
-      '<span class="obs-tag obs-info">' + nl2br(d.obs) + '</span></div>' : '') +
+      '<audio class="audio-player" controls preload="metadata" src="' + h(fileUrl(AUDIO_DIR, d.audio)) + '"></audio>' +
+      '<div class="audio-error" style="display:none"></div></div>' : '') +
 
     // Horarios
     (d.horario ? '<div class="hr-block"><div class="sec-title"><span class="sec-title-icon">🕐</span>Horarios</div>' +
@@ -575,8 +569,25 @@ function renderDetail(d) {
     '</div>' +
     '<div class="detail-footer"></div>';
 
+  const player = elDetail.querySelector('.audio-player');
+  if (player) player.addEventListener('error', () => mostrarErrorAudio(player, d));
+
   loadHorarioStatus(d);
   loadClima(d);
+}
+
+/* Si el audio no carga, se explica qué pasó y se ofrece abrir el mp3 directo (sirve para diagnosticar) */
+function mostrarErrorAudio(player, d) {
+  const box = player.parentElement.querySelector('.audio-error');
+  if (!box) return;
+  const code = player.error && player.error.code;
+  const causa = code === 2 ? 'Se interrumpió la descarga: revisá tu conexión.'
+              : code === 3 ? 'El archivo de audio no se pudo decodificar.'
+              : code === 4 ? 'No se encontró el archivo de audio o su formato no es compatible.'
+              : 'No se pudo cargar el audio.';
+  console.warn('Audio no disponible:', player.getAttribute('src'), '(código ' + code + ')');
+  box.innerHTML = h(causa) + ' <a href="' + h(fileUrl(AUDIO_DIR, d.audio)) + '" target="_blank" rel="noopener">Abrir el audio en otra pestaña</a>';
+  box.style.display = 'block';
 }
 
 function emptyState() {
