@@ -20,7 +20,6 @@ const DATA = [
   "lat": -54.8059734,
   "lng": -68.30017149999999,
   "foto1": "Museo_fin_mundo.jpg",
-  "mapImg": "Museo_fin_mundo_ubic.jpg",
   "epoca": "Todo el año.",
   "horario": "Lunes a viernes de 10:00 a 19:00 horas.\nSábados de 13:00 a 19:00 horas.\nDomingos y feriados CERRADO.",
   "audio": "museo-fin-del-mundo.mp3",
@@ -51,37 +50,6 @@ const DATA = [
   "horario": "Todos los días de 10:00 a 20:00 horas.",
   "audio": "ex-presidio.mp3",
   "qr": "QR-04-ex-presidio.png"
- },
- {
-  "tipo": "LUGAR DE INTERES",
-  "nombre": "05 · Glaciar Marcial",
-  "obs": "El glaciar Martial es un emblema de Ushuaia. Se encuentra dentro del Área Natural Protegida que lleva el mismo nombre, a sólo 7 kilómetros del centro y ofrece todo tipo de actividades para disfrutar de la naturaleza: en invierno el esquí alpino y snowboard son las preferidas y en verano se posiciona como uno de los lugares más accesibles para disfrutar del senderismo. Además, allí encontrás establecimientos gastronómicos abiertos todo el año. El Martial es un glaciar de circo debido a su forma semejante a un anfiteatro o semicírculo. Está situado a unos 1000 msnm y su nombre proviene del comandante de la expedición científica francesa de 1882-1883, Louis Ferdinand Martial. Actualmente es un remanente glaciario, es decir, restos de un antiguo glaciar mucho más grande. Desde allí nace el arroyo Buena Esperanza que constituye una importante fuente de agua potable para la ciudad.",
-  "mapSrc": "https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d18398.823493339005!2d-68.36740152800262!3d-54.80012791791051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sglaciar%20martial%20ushuaia!5e0!3m2!1ses!2sar!4v1793995938469!5m2!1ses!2sar",
-  "lat": -54.80012791791051,
-  "lng": -68.36740152800262,
-  "foto1": "Martial.jpg",
-  "epoca": "Todo el año."
- },
- {
-  "tipo": "LUGAR DE INTERES",
-  "nombre": "06 · Plaza Islas Malvinas",
-  "obs": "La plaza Islas Malvinas se encuentra en la costanera de Ushuaia, y contiene el Mural escultórico Héroes de Malvinas, monumento nacional.\nLa plaza y el mural homenajean a los caídos en la guerra de 1982.",
-  "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4598.544257033145!2d-68.30856452254231!3d-54.81033437874355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c2320ed8451b7%3A0x56ae75d260110526!2sPlaza%20Islas%20Malvinas!5e0!3m2!1ses!2sar!4v1793983938542!5m2!1ses!2sar",
-  "lat": -54.81033437874355,
-  "lng": -68.30856452254231,
-  "foto1": "Plaza_islas_Malvinas.jpg",
-  "epoca": "Todo el año."
- },
- {
-  "tipo": "LUGAR DE INTERES",
-  "nombre": "07 · Tren del Fin del Mundo",
-  "obs": "El Tren del Fin del Mundo es una experiencia turística única que recrea los últimos kilómetros del histórico tren de los presos de Ushuaia, atravesando los paisajes imponentes del Parque Nacional Tierra del Fuego.",
-  "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2297.977306082609!2d-68.4242141!3d-54.8330835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c180d23386b41%3A0xa4d2a50c49f182f6!2sTren%20del%20Fin%20del%20Mundo!5e0!3m2!1ses!2sar!4v1793996569396!5m2!1ses!2sar",
-  "lat": -54.8330835,
-  "lng": -68.4242141,
-  "foto1": "Tren_fin_mundo.jpg",
-  "epoca": "Todo el año.",
-  "horario": "La estación permanece abierta de 8:30 a 17:15 hs."
  }
 ];
 
