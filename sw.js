@@ -1,7 +1,7 @@
 /* sw.js — Sitios de interés en Ushuaia
    IMPORTANTE: al publicar cambios en el código, subí el número de versión de CACHE
    (v1 -> v2 -> ...) para que los celulares descarguen la versión nueva. */
-const CACHE = 'sitios-ushuaia-v3';
+const CACHE = 'sitios-ushuaia-v4';
 
 /* App shell para que abra sin internet (solo archivos que EXISTEN en el repo) */
 const PRECACHE = [
@@ -82,7 +82,7 @@ self.addEventListener('fetch', e => {
   /* Mismo origen */
   if (url.origin === self.location.origin) {
     const p = url.pathname;
-    const isCore = p.endsWith('/') || /\/(index\.html|style\.css|app\.js|data\.js|manifest\.json)$/.test(p);
+    const isCore = p.endsWith('/') || /\.(html|css|js|json)$/.test(p);   // incluye las páginas de audioguia/estaciones/
 
     if (isCore) {
       /* Network-first: si hay red trae lo último; si no, caché */
