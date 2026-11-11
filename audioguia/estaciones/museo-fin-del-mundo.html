@@ -1,27 +1,127 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#142b3b"><title>Museo del Fin del Mundo | Ushuaia cuenta su historia</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1F5A8F">
+<title>Museo del Fin del Mundo | Ushuaia cuenta su historia</title>
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="apple-touch-icon" href="../../pwa_icon_192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#142b3b;--paper:#f4f1eb;--ink:#202b31;--muted:#63717a;--accent:#b77b4b}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
-header{background:var(--navy);color:white;padding:34px 20px}header .inner,main{max-width:780px;margin:auto}
-.kicker{text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:#d5b99f;font-weight:700}
-h1{font:500 clamp(2rem,7vw,3.2rem)/1.12 Georgia,serif;margin:.4rem 0}
-.tagline{color:#dce5e8;margin:0}main{padding:28px 20px 52px}
-.card{background:white;border:1px solid #dedbd4;border-radius:16px;padding:22px}
-.label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:750}
-h2{font:500 1.8rem/1.2 Georgia,serif;margin:.2rem 0 .5rem}
-.intro{color:var(--muted)}.notice{background:#f7f5f1;border-radius:12px;padding:18px;margin-top:20px}
-.status{font-size:.75rem;letter-spacing:.12em;font-weight:800;color:#8a633f}
-.small,footer{font-size:.9rem;color:var(--muted)}footer{border-top:1px solid #ddd7ce;margin-top:28px;padding-top:18px}
-a{color:#24485b;font-weight:650}
-</style></head>
-<body><header><div class="inner"><div class="kicker">Audioguía urbana · Ushuaia</div>
-<h1>Ushuaia cuenta<br>su historia</h1><p class="tagline">Una ciudad, muchas historias. Descubrila escuchando.</p></div></header>
-<main><section class="card"><div class="label">Estación 02</div><h2>Museo del Fin del Mundo</h2>
-<p class="intro">Un recorrido por los pueblos originarios, los navegantes, las expediciones y la historia natural de Tierra del Fuego.</p><div class="notice"><p class="status">AUDIO PRÓXIMAMENTE</p>
-<p>Estamos preparando la narración de esta estación.</p></div>
-<p class="small">Audioguía en desarrollo. Próximamente, narraciones en español, inglés y portugués.</p>
-</section><footer><a href="../index.html">Volver a la audioguía</a></footer></main></body></html>
+/* Paleta y estética de la app (ver README_COLORES.md) */
+:root{
+  --parch:#DCE9F5; --parch-light:#F4F8FC;
+  --leather:#1F5A8F; --leather-dk:#123A63; --leather-md:#2F73AE;
+  --bronze:#2E7CB8; --bronze-lt:#8DBEE6; --bronze-dk:#0F3558;
+  --ink:#0E2236; --ink-md:#2C4A66; --ink-lt:#5B7C99;
+  --border:rgba(31,90,143,0.22);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.6;
+  background:var(--parch-light);background-image:radial-gradient(ellipse at 20% 10%,rgba(207,226,243,0.55) 0%,transparent 60%)}
+/* Cabecera igual a la de la app */
+.header{background:linear-gradient(180deg,#0A2336 0%,#143854 100%);padding:8px 14px;position:sticky;top:0;z-index:100;
+  border-bottom:2px solid var(--bronze-dk);box-shadow:0 3px 12px rgba(0,0,0,0.5)}
+.brand{display:flex;align-items:center;gap:12px;max-width:780px;margin:0 auto;text-decoration:none;color:inherit}
+.penguin{width:50px;height:50px;flex-shrink:0;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5))}
+.app-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(18px,5.6vw,24px);font-weight:900;color:var(--parch);line-height:1.15;text-shadow:1px 2px 4px rgba(0,0,0,0.5)}
+.app-sub{font-size:12px;font-weight:500;letter-spacing:.3px;color:var(--bronze-lt);margin-top:3px;opacity:.8}
+main{max-width:780px;margin:0 auto;padding:22px 16px 48px}
+/* Ficha de la estación */
+.card{background:#fff;border:1px solid var(--border);border-top:4px solid var(--leather);border-radius:8px;padding:22px 20px 20px;box-shadow:0 6px 24px rgba(15,53,88,0.08)}
+.label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bronze)}
+h1{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:clamp(1.7rem,6.4vw,2.3rem);line-height:1.15;color:var(--ink);margin:.35rem 0 .5rem}
+.intro{margin:0 0 22px;color:var(--ink-md)}
+.sec-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bronze);margin:0 0 10px;padding-bottom:5px;border-bottom:1px solid rgba(51,108,151,0.25)}
+audio{display:block;width:100%;margin:6px 0 10px}
+.note{margin:0;font-size:.85rem;color:var(--ink-lt)}
+.audio-error{margin:10px 0 0;font-size:.9rem;color:#8B2A1A}
+.audio-error[hidden]{display:none}
+/* Botones */
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{flex:1 1 220px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;font-weight:600;text-decoration:none;
+  border-radius:6px;padding:11px 14px;color:var(--bronze);background:rgba(51,108,151,0.07);border:1.5px solid rgba(51,108,151,0.3);transition:background .15s}
+.btn:hover{background:rgba(51,108,151,0.14)}
+.btn-main{color:var(--parch-light);background:var(--leather);border-color:var(--leather-dk)}
+.btn-main:hover{background:var(--leather-md)}
+footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--border);color:var(--ink-lt);font-size:.82rem}
+footer p{margin:0}
+</style>
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="../../index.html" aria-label="Ir a la app Ushuaia cuenta su historia">
+    <svg class="penguin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Pingüino">
+    <defs>
+    <linearGradient id="pg-bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#E6F3FD"/><stop offset="1" stop-color="#9CC8EA"/>
+    </linearGradient>
+    </defs>
+    <!-- fondo circular celeste -->
+    <circle cx="60" cy="60" r="57" fill="url(#pg-bg)" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- sombra en el hielo -->
+    <ellipse cx="60" cy="103" rx="30" ry="5" fill="#0F3558" opacity="0.18"/>
+    <!-- aletas -->
+    <path d="M37 62 C24 68 20 88 27 98 C36 92 41 80 41 66 Z" fill="#12263A"/>
+    <path d="M83 62 C96 68 100 88 93 98 C84 92 79 80 79 66 Z" fill="#12263A"/>
+    <!-- cuerpo -->
+    <path d="M60 14 C41 14 33 31 33 51 C33 77 38 99 60 99 C82 99 87 77 87 51 C87 31 79 14 60 14 Z" fill="#12263A"/>
+    <!-- panza -->
+    <path d="M60 52 C48 52 43 65 43 78 C43 91 49 97 60 97 C71 97 77 91 77 78 C77 65 72 52 60 52 Z" fill="#FFFFFF"/>
+    <!-- parches blancos de la cara -->
+    <circle cx="51" cy="38" r="10" fill="#FFFFFF"/>
+    <circle cx="69" cy="38" r="10" fill="#FFFFFF"/>
+    <!-- ojos -->
+    <circle cx="52" cy="39" r="4.2" fill="#12263A"/>
+    <circle cx="68" cy="39" r="4.2" fill="#12263A"/>
+    <circle cx="53.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
+    <circle cx="69.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
+    <!-- pico -->
+    <path d="M53 46 Q60 41 67 46 Q60 57 53 46 Z" fill="#F5A623"/>
+    <!-- bufanda -->
+    <path d="M39 57 Q60 69 81 57 L81 65 Q60 77 39 65 Z" fill="#3F8FD0"/>
+    <path d="M49 63 Q60 68 71 63 L71 66 Q60 71 49 66 Z" fill="#FFFFFF" opacity="0.9"/>
+    <path d="M72 66 L81 63 L84 80 L75 82 Z" fill="#3F8FD0"/>
+    <!-- patas -->
+    <ellipse cx="50" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
+    <ellipse cx="70" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
+    </svg>
+    <div>
+      <div class="app-title">Ushuaia cuenta su historia</div>
+      <div class="app-sub">Una ciudad, muchas historias. Descubrila.</div>
+    </div>
+  </a>
+</header>
+<main>
+<article class="card">
+  <div class="label">Estación 02</div>
+  <h1>Museo del Fin del Mundo</h1>
+  <p class="intro">Un recorrido por los pueblos originarios, los navegantes, las expediciones y la historia natural de Tierra del Fuego.</p>
+  <div class="sec-title">🎧 Audioguía</div>
+  <audio controls preload="metadata">
+    <source src="../audios/museo-fin-del-mundo.mp3" type="audio/mpeg">
+    Tu navegador no puede reproducir este audio. Probá con otro navegador.
+  </audio>
+  <p class="audio-error" id="audio-error" hidden>No se pudo cargar el audio. Revisá tu conexión e intentá de nuevo.</p>
+  <p class="note">Para escuchar, tocá el botón de reproducción. Se necesita conexión a Internet.</p>
+</article>
+<nav class="actions" aria-label="Volver a la app">
+  <a class="btn btn-main" href="../../index.html">← Volver a la app</a>
+  <a class="btn" href="../../index.html?sitio=02_museo_del_fin_del_mundo">Ver esta estación en la app</a>
+</nav>
+<footer>
+  <p>Proyecto piloto de audioguía urbana de Ushuaia.</p>
+</footer>
+</main>
+<script>
+(function(){
+  var s=document.querySelector('audio source'), m=document.getElementById('audio-error');
+  if(s&&m){ s.addEventListener('error',function(){ m.hidden=false; }); }
+})();
+</script>
+</body>
+</html>
