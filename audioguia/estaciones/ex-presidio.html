@@ -41,6 +41,7 @@ audio{display:block;width:100%;margin:6px 0 10px}
 .note{margin:0;font-size:.85rem;color:var(--ink-lt)}
 .audio-error{margin:10px 0 0;font-size:.9rem;color:#8B2A1A}
 .audio-error[hidden]{display:none}
+.audio-error a{color:var(--leather);font-weight:600}
 /* Botones */
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .btn{flex:1 1 220px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;font-weight:600;text-decoration:none;
@@ -106,7 +107,7 @@ footer p{margin:0}
     <source src="../audios/ex-presidio.mp3" type="audio/mpeg">
     Tu navegador no puede reproducir este audio. Probá con otro navegador.
   </audio>
-  <p class="audio-error" id="audio-error" hidden>No se pudo cargar el audio. Revisá tu conexión e intentá de nuevo.</p>
+  <p class="audio-error" id="audio-error" hidden>No se pudo cargar el audio. Revisá tu conexión e intentá de nuevo. <a href="../audios/ex-presidio.mp3" target="_blank" rel="noopener">Abrir el audio en otra pestaña</a></p>
   <p class="note">Para escuchar, tocá el botón de reproducción. Se necesita conexión a Internet.</p>
 </article>
 <nav class="actions" aria-label="Volver a la app">
