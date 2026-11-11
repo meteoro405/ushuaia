@@ -23,6 +23,7 @@ const DATA = [
   "mapImg": "Museo_fin_mundo_ubic.jpg",
   "epoca": "Todo el año.",
   "horario": "Lunes a viernes de 10:00 a 19:00 horas.\nSábados de 13:00 a 19:00 horas.\nDomingos y feriados CERRADO.",
+  "audio": "museo-fin-del-mundo.mp3",
   "qr": "QR-02-museo-fin-del-mundo.png"
  },
  {
@@ -35,6 +36,7 @@ const DATA = [
   "foto1": "Casa_Beban.jpg",
   "epoca": "Todo el año.",
   "horario": "Lunes a viernes de 10:00 a 18:00 horas.",
+  "audio": "casa-beban.mp3",
   "qr": "QR-03-casa-beban.png"
  },
  {
@@ -47,6 +49,7 @@ const DATA = [
   "foto1": "Museo_maritimo.jpg",
   "epoca": "Todo el año.",
   "horario": "Todos los días de 10:00 a 20:00 horas.",
+  "audio": "ex-presidio.mp3",
   "qr": "QR-04-ex-presidio.png"
  },
  {
