@@ -11,7 +11,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Paleta y estética de la app (ver README_COLORES.md) */
 :root{
   --parch:#DCE9F5; --parch-light:#F4F8FC;
   --leather:#1F5A8F; --leather-dk:#123A63; --leather-md:#2F73AE;
@@ -23,7 +22,6 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;min-height:100vh;color:var(--ink);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.6;
   background:var(--parch-light);background-image:radial-gradient(ellipse at 20% 10%,rgba(207,226,243,0.55) 0%,transparent 60%)}
-/* Cabecera igual a la de la app */
 .header{background:linear-gradient(180deg,#0A2336 0%,#143854 100%);padding:8px 14px;position:sticky;top:0;z-index:100;
   border-bottom:2px solid var(--bronze-dk);box-shadow:0 3px 12px rgba(0,0,0,0.5)}
 .brand{display:flex;align-items:center;gap:12px;max-width:780px;margin:0 auto;text-decoration:none;color:inherit}
@@ -31,8 +29,7 @@ body{margin:0;min-height:100vh;color:var(--ink);font-family:'Inter',system-ui,-a
 .app-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(18px,5.6vw,24px);font-weight:900;color:var(--parch);line-height:1.15;text-shadow:1px 2px 4px rgba(0,0,0,0.5)}
 .app-sub{font-size:12px;font-weight:500;letter-spacing:.3px;color:var(--bronze-lt);margin-top:3px;opacity:.8}
 main{max-width:780px;margin:0 auto;padding:22px 16px 48px}
-/* Ficha de la estación */
-.card{background:#fff;border:1px solid var(--border);border-top:4px solid var(--leather);border-radius:8px;padding:22px 20px 20px;box-shadow:0 6px 24px rgba(15,53,88,0.08)}
+.card{background:var(--parch-light);border:1px solid var(--border);border-top:4px solid var(--leather);border-radius:8px;padding:22px 20px 20px;box-shadow:0 6px 24px rgba(15,53,88,0.08)}
 .label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bronze)}
 h1{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:clamp(1.7rem,6.4vw,2.3rem);line-height:1.15;color:var(--ink);margin:.35rem 0 .5rem}
 .intro{margin:0 0 22px;color:var(--ink-md)}
@@ -42,54 +39,37 @@ audio{display:block;width:100%;margin:6px 0 10px}
 .audio-error{margin:10px 0 0;font-size:.9rem;color:#8B2A1A}
 .audio-error[hidden]{display:none}
 .audio-error a{color:var(--leather);font-weight:600}
-/* Botones */
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .btn{flex:1 1 220px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;font-weight:600;text-decoration:none;
   border-radius:6px;padding:11px 14px;color:var(--bronze);background:rgba(51,108,151,0.07);border:1.5px solid rgba(51,108,151,0.3);transition:background .15s}
 .btn:hover{background:rgba(51,108,151,0.14)}
 .btn-main{color:var(--parch-light);background:var(--leather);border-color:var(--leather-dk)}
 .btn-main:hover{background:var(--leather-md)}
-footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--border);color:var(--ink-lt);font-size:.82rem}
-footer p{margin:0}
+footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--border);font-size:.9rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+footer a{color:var(--leather);font-weight:600;text-decoration:none}
+footer a:hover{color:var(--leather-md);text-decoration:underline}
 </style>
 </head>
 <body>
 <header class="header">
   <a class="brand" href="../../index.html" aria-label="Ir a la app Ushuaia cuenta su historia">
     <svg class="penguin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Pingüino">
-    <defs>
-    <linearGradient id="pg-bg" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#E6F3FD"/><stop offset="1" stop-color="#9CC8EA"/>
-    </linearGradient>
-    </defs>
-    <!-- fondo circular celeste -->
-    <circle cx="60" cy="60" r="57" fill="url(#pg-bg)" stroke="#FFFFFF" stroke-width="3"/>
-    <!-- sombra en el hielo -->
-    <ellipse cx="60" cy="103" rx="30" ry="5" fill="#0F3558" opacity="0.18"/>
-    <!-- aletas -->
-    <path d="M37 62 C24 68 20 88 27 98 C36 92 41 80 41 66 Z" fill="#12263A"/>
-    <path d="M83 62 C96 68 100 88 93 98 C84 92 79 80 79 66 Z" fill="#12263A"/>
-    <!-- cuerpo -->
-    <path d="M60 14 C41 14 33 31 33 51 C33 77 38 99 60 99 C82 99 87 77 87 51 C87 31 79 14 60 14 Z" fill="#12263A"/>
-    <!-- panza -->
-    <path d="M60 52 C48 52 43 65 43 78 C43 91 49 97 60 97 C71 97 77 91 77 78 C77 65 72 52 60 52 Z" fill="#FFFFFF"/>
-    <!-- parches blancos de la cara -->
-    <circle cx="51" cy="38" r="10" fill="#FFFFFF"/>
-    <circle cx="69" cy="38" r="10" fill="#FFFFFF"/>
-    <!-- ojos -->
-    <circle cx="52" cy="39" r="4.2" fill="#12263A"/>
-    <circle cx="68" cy="39" r="4.2" fill="#12263A"/>
-    <circle cx="53.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
-    <circle cx="69.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
-    <!-- pico -->
-    <path d="M53 46 Q60 41 67 46 Q60 57 53 46 Z" fill="#F5A623"/>
-    <!-- bufanda -->
-    <path d="M39 57 Q60 69 81 57 L81 65 Q60 77 39 65 Z" fill="#3F8FD0"/>
-    <path d="M49 63 Q60 68 71 63 L71 66 Q60 71 49 66 Z" fill="#FFFFFF" opacity="0.9"/>
-    <path d="M72 66 L81 63 L84 80 L75 82 Z" fill="#3F8FD0"/>
-    <!-- patas -->
-    <ellipse cx="50" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
-    <ellipse cx="70" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
+      <defs><linearGradient id="pg-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6F3FD"/><stop offset="1" stop-color="#9CC8EA"/></linearGradient></defs>
+      <circle cx="60" cy="60" r="57" fill="url(#pg-bg)" stroke="#FFFFFF" stroke-width="3"/>
+      <ellipse cx="60" cy="103" rx="30" ry="5" fill="#0F3558" opacity="0.18"/>
+      <path d="M37 62 C24 68 20 88 27 98 C36 92 41 80 41 66 Z" fill="#12263A"/>
+      <path d="M83 62 C96 68 100 88 93 98 C84 92 79 80 79 66 Z" fill="#12263A"/>
+      <path d="M60 14 C41 14 33 31 33 51 C33 77 38 99 60 99 C82 99 87 77 87 51 C87 31 79 14 60 14 Z" fill="#12263A"/>
+      <path d="M60 52 C48 52 43 65 43 78 C43 91 49 97 60 97 C71 97 77 91 77 78 C77 65 72 52 60 52 Z" fill="#FFFFFF"/>
+      <circle cx="51" cy="38" r="10" fill="#FFFFFF"/><circle cx="69" cy="38" r="10" fill="#FFFFFF"/>
+      <circle cx="52" cy="39" r="4.2" fill="#12263A"/><circle cx="68" cy="39" r="4.2" fill="#12263A"/>
+      <circle cx="53.4" cy="37.6" r="1.4" fill="#FFFFFF"/><circle cx="69.4" cy="37.6" r="1.4" fill="#FFFFFF"/>
+      <path d="M53 46 Q60 41 67 46 Q60 57 53 46 Z" fill="#F5A623"/>
+      <path d="M39 57 Q60 69 81 57 L81 65 Q60 77 39 65 Z" fill="#3F8FD0"/>
+      <path d="M49 63 Q60 68 71 63 L71 66 Q60 71 49 66 Z" fill="#FFFFFF" opacity="0.9"/>
+      <path d="M72 66 L81 63 L84 80 L75 82 Z" fill="#3F8FD0"/>
+      <ellipse cx="50" cy="99" rx="10" ry="4.5" fill="#F5A623"/><ellipse cx="70" cy="99" rx="10" ry="4.5" fill="#F5A623"/>
     </svg>
     <div>
       <div class="app-title">Ushuaia cuenta su historia</div>
@@ -110,12 +90,14 @@ footer p{margin:0}
   <p class="audio-error" id="audio-error" hidden>No se pudo cargar el audio. Revisá tu conexión e intentá de nuevo. <a href="../audios/ex-presidio.mp3" target="_blank" rel="noopener">Abrir el audio en otra pestaña</a></p>
   <p class="note">Para escuchar, tocá el botón de reproducción. Se necesita conexión a Internet.</p>
 </article>
-<nav class="actions" aria-label="Volver a la app">
-  <a class="btn btn-main" href="../../index.html">← Volver a la app</a>
-  <a class="btn" href="../../index.html?sitio=04_ex_presidio">Ver esta estación en la app</a>
+<nav class="actions" aria-label="Navegación">
+  <a class="btn btn-main" href="../../index.html?sitio=04_ex_presidio">Ver esta estación en la app</a>
 </nav>
 <footer>
-  <p>Proyecto piloto de audioguía urbana de Ushuaia.</p>
+  <nav class="footer-links" aria-label="Otros destinos">
+    <a href="https://meteoro405.github.io/ushuaia/audioguia/index.html">← Volver a la audioguía</a>
+    <a href="https://meteoro405.github.io/ushuaia/index.html">← Volver a la webapp</a>
+  </nav>
 </footer>
 </main>
 <script>
