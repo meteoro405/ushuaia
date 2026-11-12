@@ -1,16 +1,357 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Audioguía · Ushuaia cuenta su historia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Ushuaia cuenta su historia | Audioguía urbana</title>
+
 <style>
-body{margin:0;background:#f4f1eb;color:#202b31;font:16px/1.6 system-ui,sans-serif}
-header{background:#142b3b;color:#fff;padding:34px 22px}main{max-width:760px;margin:30px auto;padding:0 20px}
-h1{font:500 clamp(2rem,7vw,3rem)/1.1 Georgia,serif;margin:.4rem 0}
-.small{color:#d5b99f;text-transform:uppercase;letter-spacing:.13em;font-size:.75rem}
-.card{background:white;border:1px solid #dedbd4;border-radius:14px;padding:20px;margin:16px 0}
-a{color:#24485b;font-weight:700}
-</style></head>
-<body><header><div class="small">Audioguía urbana · Ushuaia</div><h1>Ushuaia cuenta su historia</h1><div>Una ciudad, muchas historias. Descubrila escuchando.</div></header>
-<main><h2>Estaciones</h2><div class="card"><strong>01 · Plaza Cívica 12 de Octubre</strong><p>Donde comenzó la historia institucional de Ushuaia.</p><a href="estaciones/plaza-civica.html">Escuchar esta estación →</a></div>
-<p>Versión de prueba del proyecto piloto.</p></main></body></html>
+:root {
+  --parch: #DCE9F5;
+  --parch-light: #F4F8FC;
+  --leather: #1F5A8F;
+  --leather-dk: #123A63;
+  --leather-md: #2F73AE;
+  --bronze: #2E7CB8;
+  --bronze-lt: #8DBEE6;
+  --bronze-dk: #0F3558;
+  --ink: #0E2236;
+  --ink-md: #2C4A66;
+  --ink-lt: #5B7C99;
+  --border: rgba(31,90,143,0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--parch-light);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(
+    180deg,
+    #0A2336 0%,
+    #143854 100%
+  );
+  color: white;
+  padding: 48px 22px 42px;
+  text-align: center;
+}
+
+.header-inner {
+  max-width: 850px;
+  margin: auto;
+}
+
+.small {
+  color: var(--bronze-lt);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 7vw, 48px);
+  font-weight: normal;
+  line-height: 1.15;
+  margin: 15px 0;
+}
+
+.tagline {
+  color: #DCE9F5;
+  font-size: 17px;
+  margin: 0;
+}
+
+main {
+  max-width: 850px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: var(--leather-dk);
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.intro p {
+  color: var(--ink-md);
+  margin-top: 0;
+}
+
+.station {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  margin: 18px 0;
+  box-shadow: 0 3px 12px rgba(18,58,99,0.06);
+}
+
+.station-number {
+  color: var(--bronze);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.station h3 {
+  color: var(--leather-dk);
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: normal;
+  margin: 5px 0 8px;
+}
+
+.station p {
+  color: var(--ink-md);
+  margin: 0 0 18px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.action {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  padding: 11px 17px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.listen {
+  background: var(--leather);
+  color: white;
+}
+
+.listen:hover {
+  background: var(--leather-dk);
+}
+
+.download {
+  background: var(--parch);
+  color: var(--leather-dk);
+  border: 1px solid var(--bronze-lt);
+}
+
+.download:hover {
+  background: #CFE2F3;
+}
+
+.language {
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+footer {
+  background: linear-gradient(
+    180deg,
+    #E4EFF9 0%,
+    #D3E5F4 100%
+  );
+  border-top: 1px solid var(--border);
+  color: var(--ink-md);
+  text-align: center;
+  padding: 25px 20px;
+  margin-top: 45px;
+  font-size: 13px;
+}
+
+footer a {
+  color: var(--leather-dk);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+  header {
+    padding: 38px 18px;
+  }
+
+  main {
+    margin: 25px auto;
+    padding: 0 14px;
+  }
+
+  .station {
+    padding: 18px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .action {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="small">Audioguía urbana · Tierra del Fuego</div>
+
+    <h1>Ushuaia cuenta su historia</h1>
+
+    <p class="tagline">
+      Una ciudad, muchas historias. Descubrila escuchando.
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <h2>Estaciones de la audioguía</h2>
+    <p>
+      Elegí un lugar, escuchá su historia y descubrí
+      los acontecimientos y personajes que forman
+      parte de la identidad de Ushuaia.
+    </p>
+  </section>
+
+  <!-- ESTACIÓN 01 -->
+  <article class="station">
+    <div class="station-number">Estación 01</div>
+    <h3>Plaza Cívica 12 de Octubre</h3>
+    <p>
+      Los primeros acontecimientos institucionales
+      de Ushuaia y la llegada de la Subprefectura.
+    </p>
+
+    <div class="actions">
+      <a class="action listen"
+         href="estaciones/plaza-civica.html">
+        <span class="language">🇦🇷</span>
+        Escuchar esta estación
+      </a>
+
+      <a class="action download"
+         href="audios/plaza-civica.mp3"
+         download>
+        <span class="language">🇦🇷</span>
+        Descargar esta estación
+      </a>
+    </div>
+  </article>
+
+  <!-- ESTACIÓN 02 -->
+  <article class="station">
+    <div class="station-number">Estación 02</div>
+    <h3>Museo del Fin del Mundo</h3>
+    <p>
+      Pueblos originarios, navegantes, expediciones
+      y la historia natural de Tierra del Fuego.
+    </p>
+
+    <div class="actions">
+      <a class="action listen"
+         href="estaciones/museo-fin-del-mundo.html">
+        <span class="language">🇦🇷</span>
+        Escuchar esta estación
+      </a>
+
+      <a class="action download"
+         href="audios/museo-fin-del-mundo.mp3"
+         download>
+        <span class="language">🇦🇷</span>
+        Descargar esta estación
+      </a>
+    </div>
+  </article>
+
+  <!-- ESTACIÓN 03 -->
+  <article class="station">
+    <div class="station-number">Estación 03</div>
+    <h3>Casa Beban</h3>
+    <p>
+      La historia de una familia pionera y de una
+      de las construcciones más emblemáticas de la ciudad.
+    </p>
+
+    <div class="actions">
+      <a class="action listen"
+         href="estaciones/casa-beban.html">
+        <span class="language">🇦🇷</span>
+        Escuchar esta estación
+      </a>
+
+      <a class="action download"
+         href="audios/casa-beban.mp3"
+         download>
+        <span class="language">🇦🇷</span>
+        Descargar esta estación
+      </a>
+    </div>
+  </article>
+
+  <!-- ESTACIÓN 04 -->
+  <article class="station">
+    <div class="station-number">Estación 04</div>
+    <h3>Ex Presidio</h3>
+    <p>
+      La historia del antiguo presidio, sus internos
+      y su influencia en la formación de Ushuaia.
+    </p>
+
+    <div class="actions">
+      <a class="action listen"
+         href="estaciones/ex-presidio.html">
+        <span class="language">🇦🇷</span>
+        Escuchar esta estación
+      </a>
+
+      <a class="action download"
+         href="audios/ex-presidio.mp3"
+         download>
+        <span class="language">🇦🇷</span>
+        Descargar esta estación
+      </a>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <p><strong>USHUAIA CUENTA SU HISTORIA</strong></p>
+  <p>Una ciudad, muchas historias. Descubrila escuchando.</p>
+  <p>
+    <a href="../index.html">Volver a la webapp principal</a>
+  </p>
+</footer>
+
+</body>
+</html>
