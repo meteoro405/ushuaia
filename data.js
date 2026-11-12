@@ -50,6 +50,17 @@ const DATA = [
   "horario": "Todos los días de 10:00 a 20:00 horas.",
   "audio": "ex-presidio.mp3",
   "qr": "QR-04-ex-presidio.png"
+ },
+ {
+  "tipo": "LUGAR DE INTERES",
+  "nombre": "05 · Tren del Fin del Mundo",
+  "obs": "El Tren del Fin del Mundo es una experiencia turística única que recrea los últimos kilómetros del histórico tren de los presos de Ushuaia, atravesando los paisajes imponentes del Parque Nacional Tierra del Fuego.",
+  "mapSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2297.977306082609!2d-68.4242141!3d-54.8330835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc4c180d23386b41%3A0xa4d2a50c49f182f6!2sTren%20del%20Fin%20del%20Mundo!5e0!3m2!1ses!2sar!4v1793996569396!5m2!1ses!2sar",
+  "lat": -54.8330835,
+  "lng": -68.4242141,
+  "foto1": "Tren_fin_mundo.jpg",
+  "epoca": "Todo el año.",
+  "horario": "La estación permanece abierta de 8:30 a 17:15 hs."
  }
 ];
 
